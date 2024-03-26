@@ -4,9 +4,9 @@ Participants:
 
     Bryson Martin,
 
-    David Clark,
+    David Clark, n10478396
 
-    Micah Wood,
+    Micah Wood, n11150386
 
     Jeslyne Smith, n11272503
 
@@ -74,9 +74,9 @@ _March 20 - Group Member Bryson Martin dropped the subject - Group6 is now a tea
 
 **_Scrum 1 – March 26th, 2024_**
 
-    David Clark,
+    David Clark, n10478396 
 
-    Micah Wood,
+    Micah Wood,n11150386
 
     Jeslyne Smith, n11272503
 
