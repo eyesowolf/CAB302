@@ -18,7 +18,7 @@ Todo: https://github.com/users/eyesowolf/projects/2
 ---
 About This Project:
 -
-Project Name: _Nameless as of Current (22/03/24)_
+Project Name: **Mood.E**
 
 Project Idea: **Mood Tracker**
 
