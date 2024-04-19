@@ -1,5 +1,6 @@
 package com.example.cab302.dbmodelling;
 
+import java.sql.Blob;
 import java.util.Date;
 
 public class User {
@@ -9,11 +10,13 @@ public class User {
     private String gender;
     private String email;
     private String password;
+    private String passwordSalt;
     private Date DoB;
     private String SecQ;
     private String SecA;
-    private Integer Achieves;
-    private Integer userPractitioner;
+    private int Achieves;
+    private int userPractitioner;
+    // private Blob prefs;
 
     public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
@@ -58,24 +61,24 @@ public class User {
         return DoB;
     }
 
-    public void setDoB(Date doB) {
-        DoB = doB;
+    public void setDoB(Date dob) {
+        DoB = dob;
     }
 
     public String getSecQ() {
         return SecQ;
     }
 
-    public void setSecQ(String secQ) {
-        SecQ = secQ;
+    public void setSecQ(String securityQuestion) {
+        SecQ = securityQuestion;
     }
 
     public String getSecA() {
         return SecA;
     }
 
-    public void setSecA(String secA) {
-        SecA = secA;
+    public void setSecA(String securityQuestionANS) {
+        SecA = securityQuestionANS;
     }
 
     public Integer getAchieves() {
@@ -96,5 +99,13 @@ public class User {
 
     public String getFullName() {
         return firstName + " " + lastName;
+    }
+
+    public String getPasswordSalt() {
+        return passwordSalt;
+    }
+
+    public void setPasswordSalt(String passwordSalt) {
+        this.passwordSalt = passwordSalt;
     }
 }

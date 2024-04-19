@@ -5,6 +5,12 @@ public class Achievement {
         private String achievementName;
         private String achievementDescription;
 
+    public Achievement(int achievementID,String achievementName, String achievementDescription) {
+        this.achievementID = achievementID;
+        this.achievementName = achievementName;
+        this.achievementDescription = achievementDescription;
+    }
+
     public int getAchievementID() {
         return achievementID;
     }
