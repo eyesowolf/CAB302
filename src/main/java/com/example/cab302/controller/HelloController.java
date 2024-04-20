@@ -1,5 +1,6 @@
-package com.example.cab302;
+package com.example.cab302.controller;
 
+import com.example.cab302.ApplicationTracker;
 import com.sun.jna.Platform;
 import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.Kernel32;
