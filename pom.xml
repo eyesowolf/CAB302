@@ -38,6 +38,21 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna-platform</artifactId>
+            <version>5.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pireba</groupId>
+            <artifactId>applescript</artifactId>
+            <version>0.0.5</version>
+        </dependency>
     </dependencies>
 
     <build>
