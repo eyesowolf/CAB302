@@ -19,7 +19,14 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationTracker {
+    /**
+     * This class detects what operating system the user is using and applies an appropriate method to determine what the "In Focus" windows is.
+     * @return
+     */
     public static String getActiveWindow(){
+        /**
+         * This Method is called to return the name of the in focus window as a string. on macOS there is no further data sanitisation needed
+         */
         String result = null;
         try {
             TimeUnit.SECONDS.sleep(3);
