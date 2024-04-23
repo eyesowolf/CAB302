@@ -1,51 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<VBox fx:id="root" alignment="TOP_LEFT" spacing="30.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.cab302.controller.moodInputController">
-    <padding>
-        <Insets top="10.0" left="10.0" right="20.0" bottom="20.0"/>
-    </padding>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-    <!-- Load the logo image from the images package -->
-    <ImageView preserveRatio="true" fitWidth="400" fitHeight="400">
-        <image>
-            <Image url="@images/Mood.e_LightMode.png"/>
-        </image>
-    </ImageView>
-
-    <!-- Placeholder buttons -->
-    <Button text="Button 1"/>
-    <Button text="Button 2"/>
-    <Button text="Button 3"/>
-
-    <!-- Mood Tracking section -->
-    <VBox alignment="CENTER">
-        <!-- Left side content -->
-        <VBox spacing="10">
-            <!-- Label for current date -->
-            <Label text="Today's Date: " style="-fx-text-fill: white;"/>
-            <Label text="April 1st, 2024" style="-fx-text-fill: white;"/>
-            <Label text="Today I feel..." style="-fx-font-size: 14px;"/>
-        </VBox>
-
-        <!-- Grey-colored box for mood tracking -->
-        <VBox style="-fx-background-color: #333333;" alignment="CENTER" spacing="10">
-            <Label text="Mood Tracking" style="-fx-text-fill: white; -fx-font-size: 20px;"/>
-            <Button text="Happy"/>
-            <Button text="Anxious"/>
-            <Button text="Angry"/>
-            <Button text="Upset"/>
-            <Button text="Depressed"/>
-            <Button text="Stressed"/>
-            <Button text="Inspired"/>
-            <Button text="Confident"/>
-            <Button text="Tired"/>
-        </VBox>
-    </VBox>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" stroke="BLACK" strokeType="INSIDE" width="1280.0">
+                    <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                            <stops>
+                                <Stop color="#2e5f8d" />
+                                <Stop color="WHITE" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </fill>
+                </Rectangle>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e4d5b" height="288.0" layoutX="66.0" layoutY="339.0" opacity="0.46" stroke="BLACK" strokeType="INSIDE" width="198.0" />
+                <Circle fill="DODGERBLUE" layoutX="112.0" layoutY="105.0" radius="99.0" stroke="BLACK" strokeType="INSIDE" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e4d5b" height="548.0" layoutX="311.0" layoutY="148.0" opacity="0.46" stroke="BLACK" strokeType="INSIDE" width="731.0" />
+                <Button layoutX="117.0" layoutY="407.0" mnemonicParsing="false" text="Button">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+                <Button layoutX="118.0" layoutY="461.0" mnemonicParsing="false" text="Button">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+                <Button layoutX="118.0" layoutY="511.0" mnemonicParsing="false" text="Button">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" height="443.0" layoutX="338.0" layoutY="185.0" stroke="BLACK" strokeType="INSIDE" width="673.0">
+                    <fill>
+                        <LinearGradient endX="1.0" endY="0.6553398058252426" startX="1.0">
+                            <stops>
+                                <Stop color="#768ea4" />
+                                <Stop color="WHITE" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </fill>
+                </Rectangle>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7290ab" height="428.0" layoutX="667.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
+                <RadioButton layoutX="711.0" layoutY="309.0" mnemonicParsing="false" text="Happy">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton layoutX="707.0" layoutY="210.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="89.0" text="Sad  ">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton layoutX="707.0" layoutY="260.0" mnemonicParsing="false" text="Angry">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton layoutX="708.0" layoutY="353.0" mnemonicParsing="false" text="Upset">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton layoutX="710.0" layoutY="446.0" mnemonicParsing="false" text="Depressed">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton layoutX="713.0" layoutY="490.0" mnemonicParsing="false" text="Inspired">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton layoutX="713.0" layoutY="533.0" mnemonicParsing="false" text="Confident">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton layoutX="711.0" layoutY="399.0" mnemonicParsing="false" text="Tired">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </RadioButton>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="53.0" layoutX="903.0" layoutY="554.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" width="94.0" />
+                <Button layoutX="919.0" layoutY="565.0" mnemonicParsing="false" text="Submit" />
+                <RadioButton layoutX="711.0" layoutY="580.0" mnemonicParsing="false" text="Stressed">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </RadioButton>
+                <Text layoutX="608.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[TODAYS DATE]" wrappingWidth="118.0341796875" />
+                <Button layoutX="118.0" layoutY="565.0" mnemonicParsing="false" text="Button">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+                <Button layoutX="946.0" layoutY="644.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="65.0" text="Today" />
+                <Button layoutX="338.0" layoutY="644.0" mnemonicParsing="false" text="Yesterday" />
+                <Text layoutX="381.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How are you today?.." wrappingWidth="198.0">
+                    <font>
+                        <Font size="34.0" />
+                    </font>
+                </Text>
+                <Text layoutX="102.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu" textAlignment="CENTER" wrappingWidth="118.0341796875">
+                    <font>
+                        <Font size="35.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+    </children>
 </VBox>
