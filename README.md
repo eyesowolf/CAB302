@@ -1,6 +1,6 @@
 Disclaimer:
 -
-This project has been created as an assignment task for QUT CAB203 by the following students:
+This project has been created as an assignment task for QUT CAB302 by the following students:
 David Clark, Micah Wood, Jeslyne Smith, Willem Nekker
 ---
 _Important links:_
