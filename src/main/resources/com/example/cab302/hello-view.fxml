@@ -17,5 +17,6 @@
     <Label fx:id="welcomeText"/>
     <Button text="Hello!" onAction="#onHelloButtonClick"/>
     <Button text="Switch to Mood Input" onAction="#switchToMoodInput"/>
+    <Button text="ENTER" onAction="#onHelloButtonClick"/>
     <?scenebuilder-stylesheet ../stylesheet_light.css?>
 </VBox>

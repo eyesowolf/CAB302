@@ -1,5 +1,12 @@
+.titled-pane > ."Hello!"{
+    -fx-background-color: red;
+}
+
+
   .button {
-        -fx-font : 14px "serief";
+        -fx-font-size : 16px;
+        -fx-font-family:courier_new;
         -fx-padding : 10;
-        -fx-background-color : #CCFF99;
+        -fx-background-color : #143C49;
+        -fx-text-fill:white;
     }
