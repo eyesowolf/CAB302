@@ -1,5 +1,6 @@
 package com.example.cab302;
 
+import com.github.pireba.applescript.*;
 import com.sun.jna.Native;
 import com.sun.jna.Platform;
 import com.sun.jna.Pointer;
@@ -10,12 +11,7 @@ import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinNT;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.win32.StdCallLibrary;
-import com.github.pireba.applescript.*;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationTracker {
