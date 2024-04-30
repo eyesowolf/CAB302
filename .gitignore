@@ -40,3 +40,4 @@ build/
 
 ### Ignore DB ###
 moodE.db
+.idea/misc.xml
