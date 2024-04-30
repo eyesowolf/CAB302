@@ -1,6 +1,8 @@
 package com.example.cab302.controller;
 
 import com.example.cab302.MoodEApplication;
+import com.example.cab302.dbmodelling.SqliteUsersDAO;
+import com.example.cab302.dbmodelling.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,10 +14,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.SecureRandom;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-import java.util.Objects;
+
+import static com.example.cab302.dbmodelling.SqliteUsersDAO.*;
 
 
 public class CreateAccountController {
@@ -33,13 +42,20 @@ public class CreateAccountController {
     public CheckBox showPasswordCheckBox;
     public PasswordField passwordPasswordField;
     public PasswordField confirmPasswordPasswordField;
+    public TextField securityQuestionAnswerTextField;
     @FXML
     private Label welcomeText;
 
     @FXML
     private ComboBox<String> genderComboBoxField;
 
+    @FXML
+    private ComboBox<String> securityQuestionComboBoxField;
+
     private ObservableList<String> genderComboBoxList = FXCollections.observableArrayList("Male","Female","Prefer not to say");
+
+    private ObservableList<String> securityQuestionComboBoxList = FXCollections.observableArrayList("What is the name of the street you grew up in?","What is your mother's maden name?","What was your childhood nickname","What was the model of your first car?");
+    private final ZoneId defaultZoneId = ZoneId.systemDefault();
     @FXML
     protected void onBack(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -53,8 +69,22 @@ public class CreateAccountController {
     }
     @FXML
     protected void onCreateAccount() {
-        AuthenticatePassword(passwordPasswordField.getText(), confirmPasswordPasswordField.getText());
-        AuthenticateEmail(emailTextField.getText());
+        SqliteUsersDAO userDAO = new SqliteUsersDAO();
+        boolean fieldCheck = AuthenticateFields();
+        if (fieldCheck){
+            String firstName = firstNameTextField.getText();
+            String lastName = lastNameTextField.getText();
+            String gender = genderComboBoxField.getValue();
+            String email = emailTextField.getText();
+            String password = passwordPasswordField.getText();
+            Date dob = Date.from(dobDatePicker.getValue().atStartOfDay(defaultZoneId).toInstant());
+            String securityQuestion = securityQuestionComboBoxField.getValue();
+            String securityQuestionANS = securityQuestionAnswerTextField.getText();
+            int achievements = 0;
+            int practitioner = 0;
+            User newUser = new User(firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner);
+            userDAO.addUser(newUser);
+        }
     }
 
     @FXML
@@ -77,9 +107,8 @@ public class CreateAccountController {
     @FXML
     public void initialize(){
         genderComboBoxField.setItems(genderComboBoxList);
+        securityQuestionComboBoxField.setItems(securityQuestionComboBoxList);
     }
-
-
 
     public boolean AuthenticatePassword(String password, String confirmPassword){
         /*
@@ -98,5 +127,17 @@ public class CreateAccountController {
         Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
         Matcher matcher = pattern.matcher(email);
         return matcher.find();
+    }
+
+    public boolean AuthenticateFields() {
+        boolean passwordCheck = AuthenticatePassword(passwordPasswordField.getText(), confirmPasswordPasswordField.getText());
+        boolean emailCheck = AuthenticateEmail(emailTextField.getText());
+        boolean firstNameCheck = firstNameTextField.getText().isEmpty();
+        boolean lastnameCheck = lastNameTextField.getText().isEmpty();
+        boolean genderCheck = genderComboBoxField.getValue().isEmpty();
+        boolean dateCheck = dobDatePicker.getValue().isBefore(LocalDate.now());
+        boolean secQCheck  = securityQuestionComboBoxField.getValue().isEmpty();
+        boolean secACheck = securityQuestionAnswerTextField.getText().isEmpty();
+        return (passwordCheck && emailCheck) && !(firstNameCheck || lastnameCheck || genderCheck || dateCheck || secQCheck || secACheck);
     }
 }

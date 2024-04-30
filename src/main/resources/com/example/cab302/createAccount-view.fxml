@@ -36,6 +36,8 @@
                 <TextField fx:id="passwordTextField" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                 <PasswordField fx:id="confirmPasswordPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                 <TextField fx:id="confirmPasswordTextField" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                <ComboBox fx:id="securityQuestionComboBoxField" prefWidth="400" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                <TextField fx:id="securityQuestionAnswerTextField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                 <CheckBox fx:id="showPasswordCheckBox" onAction="#onShowPassword" GridPane.columnIndex="2" GridPane.rowIndex="6" />
             <rowConstraints>
                <RowConstraints />
