@@ -1,5 +1,8 @@
 package com.example.cab302;
 
+import com.example.cab302.dbmodelling.IUserDAO;
+import com.example.cab302.dbmodelling.SqliteUsersDAO;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +12,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MoodEApplication extends Application {
+    private IUserDAO userDAO;
+    public MoodEApplication(){
+        userDAO = new SqliteUsersDAO();
+    }
     @Override
     public void start(Stage stage) throws IOException {
         showLoginView(stage);
