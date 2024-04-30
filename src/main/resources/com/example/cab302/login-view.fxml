@@ -27,7 +27,7 @@
                 <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                 <TextField fx:id="usernameTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth="Infinity"/>
-                <PasswordField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <PasswordField fx:id="passwordPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </GridPane>
             <HBox spacing="10.0" alignment="CENTER">
                 <HBox spacing="10.0" alignment="CENTER">

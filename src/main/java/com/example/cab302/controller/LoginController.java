@@ -1,6 +1,8 @@
 package com.example.cab302.controller;
 
 import com.example.cab302.MoodEApplication;
+import com.example.cab302.dbmodelling.SqliteUsersDAO;
+import com.example.cab302.dbmodelling.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -15,13 +17,14 @@ import java.util.concurrent.TimeUnit;
 public class LoginController {
     public VBox loginContainer;
     public TextField usernameTextField;
-    public PasswordField passwordTextField;
+    public PasswordField passwordPasswordField;
     @FXML
     private Label welcomeText;
 
     @FXML
     protected void onLogin(ActionEvent event) {
-        if (AuthenticateLogin()) {
+
+        if (AuthenticateLogin(usernameTextField.getText(),passwordPasswordField.getText())) {
             switchToMoodInput(event);
         } else {
             welcomeText.setText("Login Failed, Please try again");
@@ -46,13 +49,11 @@ public class LoginController {
         welcomeText.setText("Welcome to Recovery!");
     }
 
-    private boolean AuthenticateLogin(){
-        String Username = usernameTextField.getText();
-        String Password = passwordTextField.getText();
-        // check db for username
-        // get password for username
-        // authenticate
-        return Objects.equals(Username, Password);
+    private boolean AuthenticateLogin(String username, String password){
+        SqliteUsersDAO userDAO = new SqliteUsersDAO();
+        User user = userDAO.getUserByEmail(username);
+        String passwordTrue = user.getPassword();
+        return Objects.equals(password, passwordTrue);
     }
 
     public void switchToMoodInput(ActionEvent event) {

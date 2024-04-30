@@ -23,11 +23,17 @@ public interface IUserDAO {
      */
     public void deleteUser(User user);
     /**
-     * Retrieves a users from the database.
-     * @param id The id of the contact to retrieve.
-     * @return The contact with the given id, or
+     * Retrieves a user from the database given the ID of that user.
+     * @param id The id of the user to retrieve.
+     * @return The contact with the given id.
      */
-    public User getUser(int id);
+    public User getUserById(int id);
+    /**
+     * Retrieves a user from the database given the Email of that user.
+     * @param email The email of the user to retrieve.
+     * @return the contact with the given email.
+     */
+    public User getUserByEmail(String email);
     /**
      * Retrieves all contacts from the database.
      * @return A list of all contacts in the database.

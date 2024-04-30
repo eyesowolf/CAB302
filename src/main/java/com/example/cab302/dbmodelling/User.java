@@ -18,11 +18,16 @@ public class User {
     private int userPractitioner;
     // private Blob prefs;
 
-    public User(String firstName, String lastName, String email, String password) {
+    public User(String firstName, String lastName, String gender, String email, String password, String passwordSalt, Date DoB,  int Achieves, int userPractitioner) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
         this.email = email;
         this.password = password;
+        this.passwordSalt = passwordSalt;
+        this.DoB = DoB;
+        this.Achieves = Achieves;
+        this.userPractitioner = userPractitioner;
     }
 
     public int getUserID() {
