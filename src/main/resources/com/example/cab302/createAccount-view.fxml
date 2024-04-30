@@ -1,53 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.CheckBox?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.cab302.controller.CreateAccountController">
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.cab302.controller.CreateAccountController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <Label text="Create Account" />
-    <HBox VBox.vgrow="ALWAYS" spacing="20.0">
-        <VBox spacing="10.0" prefWidth="1200" fx:id="loginContainer">
-            <Label fx:id="welcomeText"/>
-            <GridPane hgap="5.0" vgap="5.0" >
+    <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+        <VBox fx:id="loginContainer" prefWidth="1200" spacing="10.0">
+            <Label fx:id="welcomeText" />
+            <GridPane hgap="5.0" vgap="5.0">
                 <columnConstraints>
-                    <ColumnConstraints minWidth="70" />
-                    <ColumnConstraints hgrow="ALWAYS"/>
+                    <ColumnConstraints minWidth="70.0" />
+                    <ColumnConstraints hgrow="ALWAYS" />
+               <ColumnConstraints />
                 </columnConstraints>
                 <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                 <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                <Label text="Date of Birth:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                <Label text="Confirm Password:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-                <TextField fx:id="usernameTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth="Infinity"/>
+                <Label text="Gender:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <Label text="Date of Birth:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                <Label text="Confirm Password:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                <TextField fx:id="usernameTextField" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <TextField fx:id="firstNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <TextField fx:id="lastNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <DatePicker fx:id="dobDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <PasswordField fx:id="passwordPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                <TextField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" visible="false"/>
-                <PasswordField fx:id="confirmPasswordPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                <TextField fx:id="confirmPasswordTextField" GridPane.columnIndex="1" GridPane.rowIndex="6" visible="false"/>
-                <CheckBox fx:id="showPasswordCheckBox" GridPane.columnIndex="2" GridPane.rowIndex="5" onAction="#onShowPassword"/>
+                <ComboBox fx:id="genderComboBoxField" prefWidth="123.0" promptText="Choose..." GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <DatePicker fx:id="dobDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <PasswordField fx:id="passwordPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                <TextField fx:id="passwordTextField" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                <PasswordField fx:id="confirmPasswordPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                <TextField fx:id="confirmPasswordTextField" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                <CheckBox fx:id="showPasswordCheckBox" onAction="#onShowPassword" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
             </GridPane>
-            <HBox spacing="10.0" alignment="CENTER">
-                <HBox spacing="10.0" alignment="CENTER">
-                    <Button text="Back" onAction="#onBack"/>
-                    <Button text="Create Account" onAction="#onCreateAccount"/>
+            <HBox alignment="CENTER" spacing="10.0">
+                <HBox alignment="CENTER" spacing="10.0">
+                    <Button onAction="#onBack" text="Back" />
+                    <Button onAction="#onCreateAccount" text="Create Account" />
                 </HBox>
             </HBox>
         </VBox>

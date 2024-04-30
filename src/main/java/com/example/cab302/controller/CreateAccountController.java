@@ -1,6 +1,8 @@
 package com.example.cab302.controller;
 
 import com.example.cab302.MoodEApplication;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -9,6 +11,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.Objects;
@@ -32,6 +36,10 @@ public class CreateAccountController {
     @FXML
     private Label welcomeText;
 
+    @FXML
+    private ComboBox<String> genderComboBoxField;
+
+    private ObservableList<String> genderComboBoxList = FXCollections.observableArrayList("Male","Female","Prefer not to say");
     @FXML
     protected void onBack(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -65,6 +73,13 @@ public class CreateAccountController {
             passwordPasswordField.setVisible(true);
         }
     }
+
+    @FXML
+    public void initialize(){
+        genderComboBoxField.setItems(genderComboBoxList);
+    }
+
+
 
     public boolean AuthenticatePassword(String password, String confirmPassword){
         /*
