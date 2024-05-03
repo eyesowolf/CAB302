@@ -1,6 +1,5 @@
 package com.example.cab302.dbmodelling;
 
-import java.sql.Blob;
 import java.util.Date;
 
 public class User {
@@ -12,17 +11,23 @@ public class User {
     private String password;
     private String passwordSalt;
     private Date DoB;
-    private String SecQ;
-    private String SecA;
+    private String secQ;
+    private String secA;
     private int Achieves;
     private int userPractitioner;
     // private Blob prefs;
 
-    public User(String firstName, String lastName, String email, String password) {
+    public User(String firstName, String lastName, String gender, String email, String password, Date DoB, String secQ, String secA, int Achieves, int userPractitioner) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
         this.email = email;
         this.password = password;
+        this.DoB = DoB;
+        this.secQ = secQ;
+        this.secA = secA;
+        this.Achieves = Achieves;
+        this.userPractitioner = userPractitioner;
     }
 
     public int getUserID() {
@@ -33,9 +38,15 @@ public class User {
         this.userID = userID;
     }
 
-    public String getGender() {
-        return gender;
-    }
+    public String getFirstName(){ return firstName; }
+
+    public void setFirstName(String firstName){this.firstName = firstName; }
+
+    public String getLastName() { return lastName; }
+
+    public void setLastName(String lastName){ this.lastName = lastName; }
+
+    public String getGender() { return gender; }
 
     public void setGender(String gender) {
         this.gender = gender;
@@ -66,19 +77,19 @@ public class User {
     }
 
     public String getSecQ() {
-        return SecQ;
+        return secQ;
     }
 
     public void setSecQ(String securityQuestion) {
-        SecQ = securityQuestion;
+        secQ = securityQuestion;
     }
 
     public String getSecA() {
-        return SecA;
+        return secA;
     }
 
     public void setSecA(String securityQuestionANS) {
-        SecA = securityQuestionANS;
+        secA = securityQuestionANS;
     }
 
     public Integer getAchieves() {
