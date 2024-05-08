@@ -30,11 +30,11 @@ public class User {
         this.userPractitioner = userPractitioner;
     }
 
-    public int getUserID() {
+    public int getID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setID(int userID) {
         this.userID = userID;
     }
 

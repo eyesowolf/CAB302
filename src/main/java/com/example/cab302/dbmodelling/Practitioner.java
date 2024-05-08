@@ -5,17 +5,17 @@ import java.sql.Blob;
 public class Practitioner {
     private int practitionerID;
     private int BaseUserID;
-    //private Blob prefs;
+    private Blob prefs;
 
-    public Practitioner(int practitionerID, int BaseUserID) {
-        this.practitionerID = practitionerID;
+    public Practitioner(int BaseUserID,Blob prefs) {
         this.BaseUserID = BaseUserID;
+        this.prefs = prefs;
     }
-    public int getPractitionerID() {
+    public int getID() {
         return practitionerID;
     }
 
-    public void setPractitionerID(int practitionerID) {
+    public void setID(int practitionerID) {
         this.practitionerID = practitionerID;
     }
 
@@ -27,4 +27,6 @@ public class Practitioner {
         BaseUserID = baseUserID;
     }
 
+    public Blob getPrefs() {return prefs;}
+    public void setPrefs(Blob prefs){this.prefs = prefs;}
 }

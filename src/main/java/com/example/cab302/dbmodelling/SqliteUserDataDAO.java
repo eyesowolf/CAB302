@@ -83,17 +83,27 @@ public class SqliteUserDataDAO implements IUserDataDAO {
         }
     }
 
+    /**
+     * Updates a user data object that has been modified by the program
+     * @param data The Data object which is to be updated in the database.
+     */
     public void updateUserData(UserData data) {
         try {
             java.sql.Date newDate = new java.sql.Date(data.getDate().getTime());
             Statement updateStatement = connection.createStatement();
-            String updateQuery = "UPDATE users SET entryName="+data.getName()+", entryDate="+newDate+", entryMood="+data.getMood()+", entryDescription="+data.getDescription()+" WHERE id="+data.getID();
+            String updateQuery = "UPDATE userData"+data.getUserID()+" SET entryName="+data.getName()+", entryDate="+newDate+", entryMood="+data.getMood()+", entryDescription="+data.getDescription()+" WHERE id="+data.getID();
             updateStatement.execute(updateQuery);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Gets user data that is within the specified range
+     * @param start The date at which to start looking for data.
+     * @param end The date at which to stop looking for data.
+     * @return
+     */
     public List<UserData> getUserDataInRange(Date start, Date end) {
         List<UserData> dataPoints = new ArrayList<>();
         try {
@@ -105,7 +115,7 @@ public class SqliteUserDataDAO implements IUserDataDAO {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String entryName = resultSet.getString("entryName");
-                Date entryDate = resultSet.getDate("entryDate");
+                java.util.Date entryDate = new java.util.Date(resultSet.getDate("entryDate").getTime());
                 String entryMood = resultSet.getString("entryMood");
                 String entryDescription = resultSet.getString("entryDescription");
                 int entryUserID = resultSet.getInt("entryUserID");
@@ -135,7 +145,7 @@ public class SqliteUserDataDAO implements IUserDataDAO {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String entryName = resultSet.getString("entryName");
-                Date entryDate = resultSet.getDate("entryDate");
+                java.util.Date entryDate = new java.util.Date(resultSet.getDate("entryDate").getTime());
                 String entryMood = resultSet.getString("entryMood");
                 String entryDescription = resultSet.getString("entryDescription");
                 int entryUserID = resultSet.getInt("entryUserID");
@@ -150,6 +160,10 @@ public class SqliteUserDataDAO implements IUserDataDAO {
         return null;
     }
 
+    /**
+     * Deletes an entry that the user no longer wants to store
+     * @param data The data element that is to be removed.
+     */
     public void deleteEntry(UserData data){
         int id = data.getID();
         try{
@@ -161,8 +175,12 @@ public class SqliteUserDataDAO implements IUserDataDAO {
         }
     }
 
+    /**
+     * Drops the user data table if the user selects to clear all their user data
+     * @param user The user who is initiating the action.
+     */
     public void deleteAllUserData(User user){
-        int id = user.getUserID();
+        int id = user.getID();
         try {
             Statement deleteStatement = connection.createStatement();
             String deleteQuery = "DROP TABLE userData"+id;
