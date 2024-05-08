@@ -79,11 +79,24 @@ public class SqliteUsersDAO implements IUserDAO{
     }
 
     public void updateUser(User user) {
-
+        try {
+            Statement updateStatement = connection.createStatement();
+            String updateQuery = "UPDATE users SET firstName="+user.getFirstName()+", lastName="+user.getLastName()+", gender="+user.getGender()+", email="+user.getEmail()+", password="+user.getPassword()+", securityQuestion="+user.getSecQ()+", securityQuestionANS="+user.getSecA()+", achievements="+user.getAchieves()+", practitioner="+user.getUserPractitioner()+" WHERE id="+user.getUserID();
+            updateStatement.execute(updateQuery);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void deleteUser(User user) {
-
+        int id = user.getUserID();
+        try {
+            Statement deleteStatement = connection.createStatement();
+            String deleteQuery = "DELETE FROM users WHERE id="+id;
+            deleteStatement.execute(deleteQuery);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public User getUserById(int id) {
@@ -161,6 +174,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 user.setUserID(id);
                 users.add(user);
             }
+            return users;
         } catch (Exception e) {
             e.printStackTrace();
         }
