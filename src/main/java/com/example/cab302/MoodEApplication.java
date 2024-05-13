@@ -18,7 +18,7 @@ public class MoodEApplication extends Application {
     }
     @Override
     public void start(Stage stage) throws IOException {
-        showLoginView(stage);
+        showSettingsView(stage);
     }
 
     private void showHelloView(Stage stage) throws IOException {
@@ -50,6 +50,15 @@ public class MoodEApplication extends Application {
 
     public void showMoodInputView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("moodInput-view.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
+        stage.setTitle("Mood Input");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void showSettingsView(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("settings-view.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
         stage.setTitle("Mood Input");

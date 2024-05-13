@@ -4,7 +4,7 @@ import java.util.Properties;
 import java.io.*;
 
 public class SettingsManager {
-    private static final String SETTINGS_FILE = "user.settings";
+    private static final String SETTINGS_FILE = "user.settings";  //file doesdnt exist, need to set up in db
     private Properties settings = new Properties();
 
     public UserSettings loadSettings() {
@@ -21,7 +21,7 @@ public class SettingsManager {
 
     public void saveSettings(UserSettings userSettings) {
         settings.setProperty("darkMode", Boolean.toString(userSettings.isDarkModeEnabled()));
-        settings.setProperty("notifications", Boolean.toString(userSettings.areNotificationsEnabled()));
+        settings.setProperty("notifications", Boolean.toString(userSettings.isNotificationsEnabled()));
 
         try (OutputStream output = new FileOutputStream(SETTINGS_FILE)) {
             settings.store(output, "User Settings");

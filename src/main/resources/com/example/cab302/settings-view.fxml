@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.cab302.SettingsController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <Label text="Settings - Customize Your Experience" style="-fx-font-size: 18px;"/>
+    <VBox spacing="10.0">
+        <CheckBox text="Enable Track Usage - App &amp; Computer" fx:id="trackUsageCheckBox"/>
+        <CheckBox text="Enable Facial Recognition" fx:id="facialRecognitionCheckBox"/>
+        <HBox spacing="10.0">
+            <Label text="Theme Mode:"/>
+            <ToggleButton fx:id="themeToggleButton" text="Light" onAction="#onThemeToggle"/>
+        </HBox>
+        <CheckBox text="Enable Game Features" fx:id="gameFeaturesCheckBox"/>
+        <CheckBox text="Enable Achievement Features" fx:id="achievementFeaturesCheckBox"/>
+        <CheckBox text="Enable Notifications" fx:id="notificationsCheckBox"/>
+        <HBox alignment="CENTER" spacing="20.0">
+            <Button text="Save Settings" onAction="#onSaveSettings"/>
+            <Button text="Cancel" onAction="#onCancelSettings"/>
+        </HBox>
+    </VBox>
+</VBox>

@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab311d6b-2b3e-40e2-aadf-20bd3d30ce43" name="Changes" comment="added dependencies, setup on local machine and ran program">
+    <list default="true" id="ab311d6b-2b3e-40e2-aadf-20bd3d30ce43" name="Changes" comment="merged master, setup fxml for settings, settings controller">
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsController.form" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/UserSettings.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cab302/settings-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/MoodEApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/MoodEApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +67,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
+    "Application.MoodEApplication.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -80,9 +82,14 @@
     "project.structure.side.proportion": "0.45057473"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\david\OneDrive\Desktop\cab302\Project\CAB302\src\main\resources\com\example\cab302" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.cab302.HelloApplication" />
+    <configuration name="MoodEApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.cab302.MoodEApplication" />
       <module name="CAB302" />
       <extension name="coverage">
         <pattern>
@@ -128,7 +135,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713846154319</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="merged master, setup fxml for settings, settings controller">
+      <option name="closed" value="true" />
+      <created>1715584994205</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715584994206</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,6 +159,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added dependencies, setup on local machine and ran program" />
-    <option name="LAST_COMMIT_MESSAGE" value="added dependencies, setup on local machine and ran program" />
+    <MESSAGE value="merged master, setup fxml for settings, settings controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="merged master, setup fxml for settings, settings controller" />
   </component>
 </project>
