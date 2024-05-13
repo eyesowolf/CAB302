@@ -37,4 +37,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Ignore DB ###
+moodE.db
 .idea/misc.xml

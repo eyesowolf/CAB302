@@ -1,19 +1,14 @@
 package com.example.cab302.controller;
 
 import com.example.cab302.ApplicationTracker;
-import com.sun.jna.Platform;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Kernel32;
-import com.sun.jna.platform.win32.User32;
-import com.sun.jna.platform.win32.WinDef;
-import com.sun.jna.platform.win32.WinNT;
-import com.sun.jna.ptr.IntByReference;
+import com.example.cab302.MoodEApplication;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
+import java.io.IOException;
 
 public class HelloController {
     @FXML
@@ -23,5 +18,15 @@ public class HelloController {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
         System.out.println(ApplicationTracker.getActiveWindow());
+    }
+
+    public void switchToMoodInput(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showMoodInputView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

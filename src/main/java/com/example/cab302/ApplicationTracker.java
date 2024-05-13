@@ -1,5 +1,6 @@
 package com.example.cab302;
 
+import com.github.pireba.applescript.*;
 import com.sun.jna.Native;
 import com.sun.jna.Platform;
 import com.sun.jna.Pointer;
@@ -10,12 +11,7 @@ import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinNT;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.win32.StdCallLibrary;
-import com.github.pireba.applescript.*;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationTracker {
@@ -28,11 +24,6 @@ public class ApplicationTracker {
          * This Method is called to return the name of the in focus window as a string. on macOS there is no further data sanitisation needed
          */
         String result = null;
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         interface Psapi extends StdCallLibrary {
             Psapi INSTANCE = (Psapi) Native.loadLibrary("Psapi", Psapi.class);
 
@@ -72,14 +63,15 @@ public class ApplicationTracker {
                 e.printStackTrace();
             }
         } else if(Platform.isLinux()) {  // Possibly most of the Unix systems will work here too, e.g. FreeBSD
-            final X11 x11 = X11.INSTANCE;
-            final XLib xlib= XLib.INSTANCE;
-            X11.Display display = x11.XOpenDisplay(null);
-            X11.Window window=new X11.Window();
-            xlib.XGetInputFocus(display, window,Pointer.NULL);
-            X11.XTextProperty name=new X11.XTextProperty();
-            x11.XGetWMName(display, window, name);
-            result = name.toString();
+//            final X11 x11 = X11.INSTANCE;
+//            final XLib xlib= XLib.INSTANCE;
+//            X11.Display display = x11.XOpenDisplay(null);
+//            X11.Window window=new X11.Window();
+//            xlib.XGetInputFocus(display, window,Pointer.NULL);
+//            X11.XTextProperty name=new X11.XTextProperty();
+//            x11.XGetWMName(display, window, name);
+//            result = name.toString();
+            result = "ApplicationTrackingNotSupported";
         }
         return result;
     }
