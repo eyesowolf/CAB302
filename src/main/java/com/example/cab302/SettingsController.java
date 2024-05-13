@@ -25,7 +25,7 @@ public class SettingsController {
         themeToggleButton.setText(userSettings.isDarkModeEnabled() ? "Dark" : "Light");
         gameFeaturesCheckBox.setSelected(userSettings.areGameFeaturesEnabled());
         achievementFeaturesCheckBox.setSelected(userSettings.areAchievementFeaturesEnabled());
-        notificationsCheckBox.setSelected(userSettings.areNotificationsEnabled());
+        notificationsCheckBox.setSelected(userSettings.isNotificationsEnabled());
     }
 
     @FXML
