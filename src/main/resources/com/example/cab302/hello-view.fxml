@@ -3,11 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<?import com.example.cab302.MoodEApplication?>
 <?import javafx.scene.control.Button?>
-<?import java.net.URL?>
-<?import java.lang.String?>
 
+<?import java.lang.String?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.cab302.controller.HelloController">
     <padding>
@@ -15,8 +13,6 @@
     </padding>
 
     <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-    <Button text="Switch to Mood Input" onAction="#switchToMoodInput"/>
     <Button text="ENTER" onAction="#onHelloButtonClick"/>
     <?scenebuilder-stylesheet ../stylesheet_light.css?>
 </VBox>
