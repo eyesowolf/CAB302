@@ -30,7 +30,7 @@ public class SqliteUsersDAO implements IUserDAO{
                     + "securityQuestion VARCHAR NOT NULL,"
                     + "securityQuestionANS VARCHAR NOT NULL,"
                     + "prefs BLOB,"
-                    + "achievements INT,"
+                    + "achievements VARCHAR,"
                     + "practitioner INT"
                     + ")";
             statement.execute(query);
@@ -65,7 +65,7 @@ public class SqliteUsersDAO implements IUserDAO{
             statement.setDate(7, new java.sql.Date(user.getDoB().getTime()));
             statement.setString(8, user.getSecQ());
             statement.setString(9, user.getSecA());
-            statement.setInt(10, user.getAchieves());
+            statement.setString(10, user.getAchieves());
             statement.setInt(11, user.getUserPractitioner());
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -112,7 +112,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
-                int achievements = resultSet.getInt("achievements");
+                String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName,  gender,  email,  password, dob,  secQ, secA ,achievements, practitioner);
                 user.setID(id);
@@ -139,7 +139,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
-                int achievements = resultSet.getInt("achievements");
+                String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName, gender,  email,  password, dob, secQ, secA, achievements, practitioner);
                 user.setID(id);
@@ -167,7 +167,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
-                int achievements = resultSet.getInt("achievements");
+                String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName,  gender,  email,  password, dob, secQ, secA,  achievements, practitioner);
                 user.setID(id);
