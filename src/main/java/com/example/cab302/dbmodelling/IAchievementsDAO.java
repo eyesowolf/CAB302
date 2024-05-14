@@ -12,4 +12,9 @@ public interface IAchievementsDAO {
      * @return A list of all achievements stored in the database
      */
     public List<Achievement> getAllAchievements();
+
+    /**
+     * Gets a single achievement object by its ID;
+     */
+    public Achievement getAchievementByID(int achievementID);
 }

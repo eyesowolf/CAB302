@@ -1,6 +1,7 @@
 package com.example.cab302.dbmodelling;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -49,6 +50,24 @@ public class SqliteAchievementsDAO implements IAchievementsDAO {
                 achievements.add(achievement);
             }
             return achievements;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Achievement getAchievementByID(int id) {
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM achievements WHERE id = ?");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()){
+                String achievementName = resultSet.getString("achievementName");
+                String achievementDescription = resultSet.getString("achievementDescription");
+                Achievement achievement = new Achievement(achievementName,  achievementDescription);
+                achievement.setID(id);
+                return achievement;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
