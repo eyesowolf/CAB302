@@ -71,11 +71,11 @@ public class CreateAccountController {
 
     }
     @FXML
-    protected void onCreateAccount() {
+    protected void onCreateAccount(ActionEvent event) {
         SqliteUsersDAO userDAO = new SqliteUsersDAO();
         boolean fieldCheck = AuthenticateFields();
         if (fieldCheck){
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat formatter = new SimpleDateFormat("yyyy-M-d");
             String firstName = firstNameTextField.getText();
             String lastName = lastNameTextField.getText();
             String gender = genderComboBoxField.getValue();
@@ -88,6 +88,13 @@ public class CreateAccountController {
             int practitioner = 0;
             User newUser = new User(firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner);
             userDAO.addUser(newUser);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            MoodEApplication app = new MoodEApplication();
+            try {
+                app.showLoginView(stage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

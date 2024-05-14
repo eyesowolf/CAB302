@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SqliteUsersDAO implements IUserDAO{
@@ -26,7 +30,7 @@ public class SqliteUsersDAO implements IUserDAO{
                     + "gender VARCHAR NOT NULL,"
                     + "email VARCHAR NOT NULL,"
                     + "password NVARCHAR NOT NULL,"
-                    + "dob DATE NOT NULL,"
+                    + "dob VARCHAR NOT NULL,"
                     + "securityQuestion VARCHAR NOT NULL,"
                     + "securityQuestionANS VARCHAR NOT NULL,"
                     + "prefs BLOB,"
@@ -129,6 +133,7 @@ public class SqliteUsersDAO implements IUserDAO{
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE email = ?");
             statement.setString(1,userEmail);
             ResultSet resultSet = statement.executeQuery();
+            DateFormat formatter = new SimpleDateFormat("yyyy-M-d");
             if (resultSet.next()){
                 int id = resultSet.getInt("id");
                 String firstName = resultSet.getString("firstName");

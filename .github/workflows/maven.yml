@@ -1,4 +1,4 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+  # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
 
 # This workflow uses actions that are not certified by GitHub.
@@ -31,6 +31,9 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+    - name: Run tests with Maven
+      run: mvn -B test --file pom.xml -Dmaven.test.failure.ignore=true
+
     - name: Generate Javadoc
       run: mvn javadoc:javadoc
 
@@ -38,3 +41,12 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: target/docs/javadoc
+
+    - name: Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Maven Tests
+        path: target/surefire-reports/*.xml
+        reporter: java-junit
+        fail-on-error: true
