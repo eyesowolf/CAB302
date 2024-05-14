@@ -17,6 +17,8 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -68,22 +70,30 @@ public class CreateAccountController {
 
     }
     @FXML
-    protected void onCreateAccount() {
+    protected void onCreateAccount(ActionEvent event) {
         SqliteUsersDAO userDAO = new SqliteUsersDAO();
         boolean fieldCheck = AuthenticateFields();
         if (fieldCheck){
+            DateFormat formatter = new SimpleDateFormat("yyyy-M-d");
             String firstName = firstNameTextField.getText();
             String lastName = lastNameTextField.getText();
             String gender = genderComboBoxField.getValue();
             String email = emailTextField.getText();
             String password = passwordPasswordField.getText();
-            Date dob = Date.from(dobDatePicker.getValue().atStartOfDay(defaultZoneId).toInstant());
+            String dob = formatter.format(Date.from(dobDatePicker.getValue().atStartOfDay(defaultZoneId).toInstant()));
             String securityQuestion = securityQuestionComboBoxField.getValue();
             String securityQuestionANS = securityQuestionAnswerTextField.getText();
             String achievements = "0";
             int practitioner = 0;
             User newUser = new User(firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner);
             userDAO.addUser(newUser);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            MoodEApplication app = new MoodEApplication();
+            try {
+                app.showLoginView(stage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

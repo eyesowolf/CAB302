@@ -10,14 +10,14 @@ public class User {
     private String email;
     private String password;
     private String passwordSalt;
-    private Date DoB;
+    private String DoB;
     private String secQ;
     private String secA;
     private String Achieves;
     private int userPractitioner;
     // private Blob prefs;
 
-    public User(String firstName, String lastName, String gender, String email, String password, Date DoB, String secQ, String secA, String Achieves, int userPractitioner) {
+    public User(String firstName, String lastName, String gender, String email, String password, String DoB, String secQ, String secA, String Achieves, int userPractitioner) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -68,11 +68,11 @@ public class User {
         this.password = password;
     }
 
-    public Date getDoB() {
+    public String getDoB() {
         return DoB;
     }
 
-    public void setDoB(Date dob) {
+    public void setDoB(String dob) {
         DoB = dob;
     }
 

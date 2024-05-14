@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SqliteUsersDAO implements IUserDAO{
@@ -26,7 +30,7 @@ public class SqliteUsersDAO implements IUserDAO{
                     + "gender VARCHAR NOT NULL,"
                     + "email VARCHAR NOT NULL,"
                     + "password NVARCHAR NOT NULL,"
-                    + "dob DATE NOT NULL,"
+                    + "dob VARCHAR NOT NULL,"
                     + "securityQuestion VARCHAR NOT NULL,"
                     + "securityQuestionANS VARCHAR NOT NULL,"
                     + "prefs BLOB,"
@@ -62,7 +66,7 @@ public class SqliteUsersDAO implements IUserDAO{
             statement.setString(3, user.getGender());
             statement.setString(4, user.getEmail());
             statement.setString(5, user.getPassword());
-            statement.setDate(7, new java.sql.Date(user.getDoB().getTime()));
+            statement.setString(7, user.getDoB());
             statement.setString(8, user.getSecQ());
             statement.setString(9, user.getSecA());
             statement.setString(10, user.getAchieves());
@@ -109,7 +113,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
+                String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
                 String achievements = resultSet.getString("achievements");
@@ -129,6 +133,7 @@ public class SqliteUsersDAO implements IUserDAO{
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE email = ?");
             statement.setString(1,userEmail);
             ResultSet resultSet = statement.executeQuery();
+            DateFormat formatter = new SimpleDateFormat("yyyy-M-d");
             if (resultSet.next()){
                 int id = resultSet.getInt("id");
                 String firstName = resultSet.getString("firstName");
@@ -136,7 +141,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
+                String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
                 String achievements = resultSet.getString("achievements");
@@ -164,7 +169,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
+                String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
                 String achievements = resultSet.getString("achievements");
