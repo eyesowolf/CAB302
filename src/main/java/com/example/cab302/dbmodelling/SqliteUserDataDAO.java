@@ -35,7 +35,7 @@ public class SqliteUserDataDAO implements IUserDataDAO {
      * A user table includes:
      * id (AUTOINCREMENT INT)
      * entryName VARCHAR
-     * entryDate DATE
+     * entryDate VARCHAR
      * entryMood VARCHAR
      * entryDescription TEXT
      * entryUserID INT
@@ -48,7 +48,7 @@ public class SqliteUserDataDAO implements IUserDataDAO {
             String query = "CREATE TABLE IF NOT EXISTS userData"+userID+" ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "entryName VARCHAR NOT NULL,"
-                    + "entryDate DATE NOT NULL,"
+                    + "entryDate VARCHAR NOT NULL,"
                     + "entryMood VARCHAR NOT NULL,"
                     + "entryDescription TEXT,"
                     + "entryUserID INT,"
@@ -69,7 +69,7 @@ public class SqliteUserDataDAO implements IUserDataDAO {
         try {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO userData"+userID+" (entryName, entryDate, entryMood, entryDescription, entryUserID) VALUES (?, ?, ?, ?, ?)");
             statement.setString(1, data.getName());
-            statement.setDate(2, new java.sql.Date(data.getDate().getTime()));
+            statement.setString(2, data.getDate());
             statement.setString(3, data.getMood());
             statement.setString(4, data.getDescription());
             statement.setInt(5, data.getUserID());
@@ -89,7 +89,7 @@ public class SqliteUserDataDAO implements IUserDataDAO {
      */
     public void updateUserData(UserData data) {
         try {
-            java.sql.Date newDate = new java.sql.Date(data.getDate().getTime());
+            String newDate = data.getDate();
             Statement updateStatement = connection.createStatement();
             String updateQuery = "UPDATE userData"+data.getUserID()+" SET entryName="+data.getName()+", entryDate="+newDate+", entryMood="+data.getMood()+", entryDescription="+data.getDescription()+" WHERE id="+data.getID();
             updateStatement.execute(updateQuery);
@@ -100,22 +100,20 @@ public class SqliteUserDataDAO implements IUserDataDAO {
 
     /**
      * Gets user data that is within the specified range
-     * @param start The date at which to start looking for data.
-     * @param end The date at which to stop looking for data.
+     * @param startDate The date at which to start looking for data as a string.
+     * @param endDate The date at which to stop looking for data as a string.
      * @return
      */
-    public List<UserData> getUserDataInRange(Date start, Date end) {
+    public List<UserData> getUserDataInRange(String startDate, String endDate) {
         List<UserData> dataPoints = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            java.sql.Date startDate = new java.sql.Date(start.getTime());
-            java.sql.Date endDate = new java.sql.Date(end.getTime());
             String query = "SELECT * FROM userData"+userID+" WHERE entryDate BETWEEN "+startDate+" AND "+endDate;
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String entryName = resultSet.getString("entryName");
-                java.util.Date entryDate = new java.util.Date(resultSet.getDate("entryDate").getTime());
+                String entryDate =resultSet.getString("entryDate");
                 String entryMood = resultSet.getString("entryMood");
                 String entryDescription = resultSet.getString("entryDescription");
                 int entryUserID = resultSet.getInt("entryUserID");
@@ -145,7 +143,7 @@ public class SqliteUserDataDAO implements IUserDataDAO {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String entryName = resultSet.getString("entryName");
-                java.util.Date entryDate = new java.util.Date(resultSet.getDate("entryDate").getTime());
+                String entryDate = resultSet.getString("entryDate");
                 String entryMood = resultSet.getString("entryMood");
                 String entryDescription = resultSet.getString("entryDescription");
                 int entryUserID = resultSet.getInt("entryUserID");

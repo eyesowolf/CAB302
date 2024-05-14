@@ -17,10 +17,13 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.logging.SimpleFormatter;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -72,12 +75,13 @@ public class CreateAccountController {
         SqliteUsersDAO userDAO = new SqliteUsersDAO();
         boolean fieldCheck = AuthenticateFields();
         if (fieldCheck){
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             String firstName = firstNameTextField.getText();
             String lastName = lastNameTextField.getText();
             String gender = genderComboBoxField.getValue();
             String email = emailTextField.getText();
             String password = passwordPasswordField.getText();
-            Date dob = Date.from(dobDatePicker.getValue().atStartOfDay(defaultZoneId).toInstant());
+            String dob = formatter.format(Date.from(dobDatePicker.getValue().atStartOfDay(defaultZoneId).toInstant()));
             String securityQuestion = securityQuestionComboBoxField.getValue();
             String securityQuestionANS = securityQuestionAnswerTextField.getText();
             String achievements = "0";

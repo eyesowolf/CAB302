@@ -9,7 +9,7 @@ import java.util.Date;
 public class UserData {
     private int ID;
     private String name;
-    private Date date;
+    private String date;
     private String mood;
     private String description;
     private int userID;
@@ -17,11 +17,11 @@ public class UserData {
     /**
      * UserData class constructor used to initialise a new UserData object
      * @param name the short name of a data object to be displayed to the user
-     * @param date the date and time of the data entry
+     * @param date the date and time of the data entry note: this should be of the format "yyyy-MM-dd HH:mm:ss"
      * @param description A description of the data being stored
      * @param userID the user ID of the user who is storing this data
      */
-    public UserData(String name, Date date, String mood, String description,int userID){
+    public UserData(String name, String date, String mood, String description,int userID){
         this.name = name;
         this.date = date;
         this.mood = mood;
@@ -35,8 +35,8 @@ public class UserData {
 
     public void setName(String name){this.name = name;}
     public String getName(){return name;}
-    public void setDate(Date date){this.date = date;}
-    public Date getDate(){return date;}
+    public void setDate(String date){this.date = date;}
+    public String getDate(){return date;}
     public void setMood(String mood){this.mood = mood;}
     public String getMood(){return mood;}
     public void setDescription(String description){this.description = description;}

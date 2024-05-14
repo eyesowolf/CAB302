@@ -62,7 +62,7 @@ public class SqliteUsersDAO implements IUserDAO{
             statement.setString(3, user.getGender());
             statement.setString(4, user.getEmail());
             statement.setString(5, user.getPassword());
-            statement.setDate(7, new java.sql.Date(user.getDoB().getTime()));
+            statement.setString(7, user.getDoB());
             statement.setString(8, user.getSecQ());
             statement.setString(9, user.getSecA());
             statement.setString(10, user.getAchieves());
@@ -109,7 +109,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
+                String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
                 String achievements = resultSet.getString("achievements");
@@ -136,7 +136,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
+                String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
                 String achievements = resultSet.getString("achievements");
@@ -164,7 +164,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
+                String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
                 String achievements = resultSet.getString("achievements");
