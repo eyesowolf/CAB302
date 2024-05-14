@@ -32,7 +32,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Run tests with Maven
-      run: test -f pom.xml
+      run: mvn -B test --file pom.xml
 
     - name: Generate Javadoc
       run: mvn javadoc:javadoc
