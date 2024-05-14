@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class SqliteUsersDAO implements IUserDAO{
@@ -31,7 +30,7 @@ public class SqliteUsersDAO implements IUserDAO{
                     + "securityQuestion VARCHAR NOT NULL,"
                     + "securityQuestionANS VARCHAR NOT NULL,"
                     + "prefs BLOB,"
-                    + "achievements INT,"
+                    + "achievements VARCHAR,"
                     + "practitioner INT"
                     + ")";
             statement.execute(query);
@@ -66,12 +65,12 @@ public class SqliteUsersDAO implements IUserDAO{
             statement.setDate(7, new java.sql.Date(user.getDoB().getTime()));
             statement.setString(8, user.getSecQ());
             statement.setString(9, user.getSecA());
-            statement.setInt(10, user.getAchieves());
+            statement.setString(10, user.getAchieves());
             statement.setInt(11, user.getUserPractitioner());
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if(generatedKeys.next()){
-                user.setUserID(generatedKeys.getInt(1));
+                user.setID(generatedKeys.getInt(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,11 +78,24 @@ public class SqliteUsersDAO implements IUserDAO{
     }
 
     public void updateUser(User user) {
-
+        try {
+            Statement updateStatement = connection.createStatement();
+            String updateQuery = "UPDATE users SET firstName="+user.getFirstName()+", lastName="+user.getLastName()+", gender="+user.getGender()+", email="+user.getEmail()+", password="+user.getPassword()+", securityQuestion="+user.getSecQ()+", securityQuestionANS="+user.getSecA()+", achievements="+user.getAchieves()+", practitioner="+user.getUserPractitioner()+" WHERE id="+user.getID();
+            updateStatement.execute(updateQuery);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void deleteUser(User user) {
-
+        int id = user.getID();
+        try {
+            Statement deleteStatement = connection.createStatement();
+            String deleteQuery = "DELETE FROM users WHERE id="+id;
+            deleteStatement.execute(deleteQuery);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public User getUserById(int id) {
@@ -97,13 +109,13 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                Date dob = resultSet.getDate("dob");
+                java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
-                int achievements = resultSet.getInt("achievements");
+                String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName,  gender,  email,  password, dob,  secQ, secA ,achievements, practitioner);
-                user.setUserID(id);
+                user.setID(id);
                 return user;
             }
         } catch (Exception e) {
@@ -124,13 +136,13 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                Date dob = resultSet.getDate("dob");
+                java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
-                int achievements = resultSet.getInt("achievements");
+                String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName, gender,  email,  password, dob, secQ, secA, achievements, practitioner);
-                user.setUserID(id);
+                user.setID(id);
                 return user;
             }
         } catch (Exception e) {
@@ -152,15 +164,16 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                Date dob = resultSet.getDate("dob");
+                java.util.Date dob = new java.util.Date(resultSet.getDate("dob").getTime());
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
-                int achievements = resultSet.getInt("achievements");
+                String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName,  gender,  email,  password, dob, secQ, secA,  achievements, practitioner);
-                user.setUserID(id);
+                user.setID(id);
                 users.add(user);
             }
+            return users;
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -13,11 +13,11 @@ public class User {
     private Date DoB;
     private String secQ;
     private String secA;
-    private int Achieves;
+    private String Achieves;
     private int userPractitioner;
     // private Blob prefs;
 
-    public User(String firstName, String lastName, String gender, String email, String password, Date DoB, String secQ, String secA, int Achieves, int userPractitioner) {
+    public User(String firstName, String lastName, String gender, String email, String password, Date DoB, String secQ, String secA, String Achieves, int userPractitioner) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -30,11 +30,11 @@ public class User {
         this.userPractitioner = userPractitioner;
     }
 
-    public int getUserID() {
+    public int getID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setID(int userID) {
         this.userID = userID;
     }
 
@@ -92,11 +92,11 @@ public class User {
         secA = securityQuestionANS;
     }
 
-    public Integer getAchieves() {
+    public String getAchieves() {
         return Achieves;
     }
 
-    public void setAchieves(Integer achieves) {
+    public void setAchieves(String achieves) {
         Achieves = achieves;
     }
 

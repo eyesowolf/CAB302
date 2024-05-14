@@ -80,7 +80,7 @@ public class CreateAccountController {
             Date dob = Date.from(dobDatePicker.getValue().atStartOfDay(defaultZoneId).toInstant());
             String securityQuestion = securityQuestionComboBoxField.getValue();
             String securityQuestionANS = securityQuestionAnswerTextField.getText();
-            int achievements = 0;
+            String achievements = "0";
             int practitioner = 0;
             User newUser = new User(firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner);
             userDAO.addUser(newUser);

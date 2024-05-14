@@ -5,8 +5,7 @@ public class Achievement {
         private String achievementName;
         private String achievementDescription;
 
-    public Achievement(int achievementID,String achievementName, String achievementDescription) {
-        this.achievementID = achievementID;
+    public Achievement(String achievementName, String achievementDescription) {
         this.achievementName = achievementName;
         this.achievementDescription = achievementDescription;
     }
@@ -15,7 +14,7 @@ public class Achievement {
         return achievementID;
     }
 
-    public void setAchievementID(int achievementID) {
+    public void setID(int achievementID) {
         this.achievementID = achievementID;
     }
 
