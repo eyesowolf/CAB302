@@ -34,7 +34,7 @@ public interface IUserDataDAO
      * @param end The date at which to stop looking for data.
      * @return Returns a list of user data entries
      */
-    public List<UserData> getUserDataInRange(Date start, Date end);
+    public List<UserData> getUserDataInRange(String startDate, String endDate);
 
     /**
      * Deletes a datapoint from the table of userData.

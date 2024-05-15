@@ -1,6 +1,8 @@
 package com.example.cab302.dbmodelling;
 
-import java.util.Date;
+/**
+ * The User class hold the data for a specified user which gets retrieved from the DAO
+ */
 
 public class User {
     private int userID;
@@ -18,6 +20,19 @@ public class User {
     // private Blob prefs;
 
     public User(String firstName, String lastName, String gender, String email, String password, String DoB, String secQ, String secA, String Achieves, int userPractitioner) {
+    /**
+     * User constructor class which is used to initialise the User class object
+     * @param firstName String: The first name of the user
+     * @param lastName String: The last name of the user
+     * @param gender String: The Gender of the user
+     * @param email String: The email of the user (Later used as their username)
+     * @param password String: The password of the user
+     * @param DoB String: The Date of Birth of the user in the format "yyyy-MM-dd"
+     * @param secQ String: The chosen security question
+     * @param secA String: The answer to the chosen security question
+     * @param Achieves String: The users awarded achievements stored as Hexadecimal
+     * @param userPractitioner int: The practitioner ID that this user has chosen to share their data with
+     */
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
