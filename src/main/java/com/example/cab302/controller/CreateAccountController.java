@@ -145,9 +145,9 @@ public class CreateAccountController {
         boolean emailCheck = AuthenticateEmail(emailTextField.getText());
         boolean firstNameCheck = firstNameTextField.getText().isEmpty();
         boolean lastnameCheck = lastNameTextField.getText().isEmpty();
-        boolean genderCheck = genderComboBoxField.getValue().isEmpty();
-        boolean dateCheck = dobDatePicker.getValue().isBefore(LocalDate.now());
-        boolean secQCheck  = securityQuestionComboBoxField.getValue().isEmpty();
+        boolean genderCheck = genderComboBoxField.getValue() == null;
+        boolean dateCheck = dobDatePicker.getValue() == null || dobDatePicker.getValue().isAfter(LocalDate.now());
+        boolean secQCheck  = securityQuestionComboBoxField.getValue() == null;
         boolean secACheck = securityQuestionAnswerTextField.getText().isEmpty();
         return (passwordCheck && emailCheck) && !(firstNameCheck || lastnameCheck || genderCheck || dateCheck || secQCheck || secACheck);
     }
