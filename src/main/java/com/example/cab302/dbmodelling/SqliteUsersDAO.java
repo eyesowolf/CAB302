@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class SqliteUsersDAO implements IUserDAO{
@@ -17,7 +15,7 @@ public class SqliteUsersDAO implements IUserDAO{
     public SqliteUsersDAO() {
         connection = SqliteConnection.getInstance();
         createTable();
-        insertSammpleData();
+        //insertSammpleData();
     }
     private void createTable() {
         // Create table if not exists
@@ -60,15 +58,15 @@ public class SqliteUsersDAO implements IUserDAO{
 
     public void addUser(User user) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, prefs, achievements, practitioner) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getFirstName());
             statement.setString(2, user.getLastName());
             statement.setString(3, user.getGender());
             statement.setString(4, user.getEmail());
             statement.setString(5, user.getPassword());
-            statement.setString(7, user.getDoB());
-            statement.setString(8, user.getSecQ());
-            statement.setString(9, user.getSecA());
+            statement.setString(6, user.getDoB());
+            statement.setString(7, user.getSecQ());
+            statement.setString(8, user.getSecA());
             statement.setString(10, user.getAchieves());
             statement.setInt(11, user.getUserPractitioner());
             statement.executeUpdate();
