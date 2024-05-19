@@ -27,21 +27,13 @@ public class UserDAOTest {
     }
 
     @Test
-    @Order(4)
+    @Order(1)
     void AddUserTest(){
         assertTrue(user.getID()>0);
     }
 
     @Test
     @Order(2)
-    void GetUserByIDTest(){
-        int userID = user.getID();
-        User pulledUser = UsersDAO.getUserById(userID);
-        assertEquals(user.getID(), pulledUser.getID());
-    }
-
-    @Test
-    @Order(1)
     void GetUserByEmailTest(){
         String userEmail = user.getEmail();
         User pulledUser = UsersDAO.getUserByEmail(userEmail);
@@ -50,9 +42,18 @@ public class UserDAOTest {
 
     @Test
     @Order(3)
+    void GetUserByIDTest(){
+        int userID = user.getID();
+        User pulledUser = UsersDAO.getUserById(userID);
+        assertEquals(user.getID(), pulledUser.getID());
+    }
+
+    @Test
+    @Order(4)
     void UpdateUserTest(){
-        user.setPassword("P@ssw0rd2");
-        UsersDAO.updateUser(user);
+        User copyOfUser = user;
+        copyOfUser.setPassword("P@ssw0rd2");
+        UsersDAO.updateUser(copyOfUser);
         User pulledUser = UsersDAO.getUserById(user.getID());
         boolean result = Objects.equals(pulledUser.getPassword(), "P@ssw0rd2");
         assertTrue(result);
