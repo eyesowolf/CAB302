@@ -1,4 +1,3 @@
-import com.example.cab302.ApplicationTracker;
 import com.example.cab302.controller.CreateAccountController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

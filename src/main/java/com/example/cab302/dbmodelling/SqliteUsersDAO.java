@@ -15,7 +15,7 @@ public class SqliteUsersDAO implements IUserDAO{
     public SqliteUsersDAO() {
         connection = SqliteConnection.getInstance();
         createTable();
-        //insertSammpleData();
+        insertSammpleData();
     }
     private void createTable() {
         // Create table if not exists
@@ -43,14 +43,18 @@ public class SqliteUsersDAO implements IUserDAO{
 
     private void insertSammpleData(){
         try{
-            Statement clearStatement = connection.createStatement();
-            String clearQuery = "DELETE FROM users";
-            clearStatement.execute(clearQuery);
-            Statement insertStatement = connection.createStatement();
-            String insertQuery = "INSERT INTO users (firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner) VALUES "
-                    + "('John','Doe','Male','john.doe@gmail.com','P@ssw0rd','2000-02-23','question','answer','1','0'),"
-                    + "('Jane','Doe','Female','jane.doe@gmail.com','P@ssw0rd','2000-02-23','question','answer','1','0')";
-            insertStatement.execute(insertQuery);
+            PreparedStatement statement = connection.prepareStatement("SELECT EXISTS (SELECT 1 FROM users)");
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int result = resultSet.getInt(1);
+                if (result == 0) {
+                    Statement insertStatement = connection.createStatement();
+                    String insertQuery = "INSERT INTO users (firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner) VALUES "
+                            + "('John','Doe','Male','john.doe@gmail.com','P@ssw0rd','2000-02-23','question','answer','1','0'),"
+                            + "('Jane','Doe','Female','jane.doe@gmail.com','P@ssw0rd','2000-02-23','question','answer','1','0')";
+                    insertStatement.execute(insertQuery);
+                }
+            }
         } catch (Exception e){
             e.printStackTrace();
         }

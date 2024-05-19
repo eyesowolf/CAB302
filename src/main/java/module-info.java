@@ -12,5 +12,6 @@ module com.example.cab302 {
     opens com.example.cab302 to javafx.fxml;
     exports com.example.cab302;
     exports com.example.cab302.controller;
+    exports com.example.cab302.dbmodelling;
     opens com.example.cab302.controller to javafx.fxml;
 }
