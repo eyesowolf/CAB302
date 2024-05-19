@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ForgotPasswordController {
     public PasswordField passwordPasswordField;
@@ -61,13 +63,11 @@ public class ForgotPasswordController {
                 toggleVerificationScreen();
                 toggleInitialScreen();
                 forgotPasswordState = States.initial;
-                onSubmit(event);
                 break;
             case reset:
                 toggleResetScreen();
                 toggleVerificationScreen();
                 forgotPasswordState = States.verification;
-                onSubmit(event);
                 break;
         }
     }
@@ -92,6 +92,14 @@ public class ForgotPasswordController {
                 verificationState();
                 break;
             case reset:
+                resetState();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                MoodEApplication app = new MoodEApplication();
+                try {
+                    app.showLoginView(stage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
         }
     }
@@ -116,7 +124,11 @@ public class ForgotPasswordController {
     }
 
     private void resetState(){
-
+        boolean passwordCheck = AuthenticatePassword(passwordPasswordField.getText(), confirmPasswordPasswordField.getText());
+        if (passwordCheck) {
+            user.setPassword(passwordPasswordField.getText());
+            userDAO.updateUser(user);
+        }
     }
 
     private void toggleInitialScreen(){
@@ -137,5 +149,18 @@ public class ForgotPasswordController {
         passwordPasswordField.setVisible(!passwordPasswordField.isVisible());
         confirmPasswordPasswordField.setVisible(!confirmPasswordPasswordField.isVisible());
         showPasswordCheckBox.setVisible(!showPasswordCheckBox.isVisible());
+    }
+
+    private boolean AuthenticatePassword(String password, String confirmPassword){
+        /*
+          given password and confirm Password returns if the passwords match and if the password meets the rest of the requirements
+          8 characters, 1 number, 1 special character, 1 capital
+          the regex pattern includes some database safety features including preventing the use of quotes and other escaping characters in the password
+          regex pattern: ^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?(?:\W|_))[^\s"\\'{}]{8,})$
+         */
+        Pattern pattern = Pattern.compile("^((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9])(?=\\S*?(?:\\W|_))[^\\s\"\\\\'{}]{8,})$");
+        Matcher matcher = pattern.matcher(password);
+        boolean matchFound = matcher.find();
+        return matchFound && Objects.equals(password, confirmPassword);
     }
 }

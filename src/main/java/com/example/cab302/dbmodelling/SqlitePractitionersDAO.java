@@ -64,9 +64,10 @@ public class SqlitePractitionersDAO implements IPractitionerDAO {
      */
     public void updatePrefs(Practitioner practitioner) {
         try {
-            Statement updateStatement = connection.createStatement();
-            String updateQuery = "UPDATE practitioners SET prefs="+practitioner.getPrefs()+" WHERE id="+practitioner.getID();
-            updateStatement.execute(updateQuery);
+            PreparedStatement updateStatement = connection.prepareStatement("UPDATE practitioners SET prefs=? WHERE id=?");
+            updateStatement.setBlob(1, practitioner.getPrefs());
+            updateStatement.setInt(2, practitioner.getID());
+            updateStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
