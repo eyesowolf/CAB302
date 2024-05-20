@@ -4,8 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class SqliteUsersDAO implements IUserDAO{
@@ -14,7 +15,7 @@ public class SqliteUsersDAO implements IUserDAO{
     public SqliteUsersDAO() {
         connection = SqliteConnection.getInstance();
         createTable();
-        insertSammpleData();
+        //insertSammpleData();
     }
     private void createTable() {
         // Create table if not exists
@@ -27,11 +28,11 @@ public class SqliteUsersDAO implements IUserDAO{
                     + "gender VARCHAR NOT NULL,"
                     + "email VARCHAR NOT NULL,"
                     + "password NVARCHAR NOT NULL,"
-                    + "dob DATE NOT NULL,"
+                    + "dob VARCHAR NOT NULL,"
                     + "securityQuestion VARCHAR NOT NULL,"
                     + "securityQuestionANS VARCHAR NOT NULL,"
                     + "prefs BLOB,"
-                    + "achievements INT,"
+                    + "achievements VARCHAR,"
                     + "practitioner INT"
                     + ")";
             statement.execute(query);
@@ -57,21 +58,21 @@ public class SqliteUsersDAO implements IUserDAO{
 
     public void addUser(User user) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, prefs, achievements, practitioner) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getFirstName());
             statement.setString(2, user.getLastName());
             statement.setString(3, user.getGender());
             statement.setString(4, user.getEmail());
             statement.setString(5, user.getPassword());
-            statement.setDate(7, new java.sql.Date(user.getDoB().getTime()));
-            statement.setString(8, user.getSecQ());
-            statement.setString(9, user.getSecA());
-            statement.setInt(10, user.getAchieves());
+            statement.setString(6, user.getDoB());
+            statement.setString(7, user.getSecQ());
+            statement.setString(8, user.getSecA());
+            statement.setString(10, user.getAchieves());
             statement.setInt(11, user.getUserPractitioner());
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if(generatedKeys.next()){
-                user.setUserID(generatedKeys.getInt(1));
+                user.setID(generatedKeys.getInt(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,11 +80,34 @@ public class SqliteUsersDAO implements IUserDAO{
     }
 
     public void updateUser(User user) {
-
+        try {
+            PreparedStatement updateStatement = connection.prepareStatement("UPDATE users SET firstName=?, lastName=?, gender=?, email=?, password=?, dob=?, securityQuestion=?, securityQuestionANS=?, prefs=?, achievements=?, practitioner=? WHERE id=?");
+            updateStatement.setString(1, user.getFirstName());
+            updateStatement.setString(2, user.getLastName());
+            updateStatement.setString(3, user.getGender());
+            updateStatement.setString(4, user.getEmail());
+            updateStatement.setString(5, user.getPassword());
+            updateStatement.setString(6, user.getDoB());
+            updateStatement.setString(7, user.getSecQ());
+            updateStatement.setString(8, user.getSecA());
+            updateStatement.setString(10, user.getAchieves());
+            updateStatement.setInt(11, user.getUserPractitioner());
+            updateStatement.setInt(12, user.getID());
+            updateStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void deleteUser(User user) {
-
+        int id = user.getID();
+        try {
+            Statement deleteStatement = connection.createStatement();
+            String deleteQuery = "DELETE FROM users WHERE id="+id;
+            deleteStatement.execute(deleteQuery);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public User getUserById(int id) {
@@ -97,13 +121,13 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                Date dob = resultSet.getDate("dob");
+                String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
-                int achievements = resultSet.getInt("achievements");
+                String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName,  gender,  email,  password, dob,  secQ, secA ,achievements, practitioner);
-                user.setUserID(id);
+                user.setID(id);
                 return user;
             }
         } catch (Exception e) {
@@ -117,6 +141,7 @@ public class SqliteUsersDAO implements IUserDAO{
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE email = ?");
             statement.setString(1,userEmail);
             ResultSet resultSet = statement.executeQuery();
+            DateFormat formatter = new SimpleDateFormat("yyyy-M-d");
             if (resultSet.next()){
                 int id = resultSet.getInt("id");
                 String firstName = resultSet.getString("firstName");
@@ -124,13 +149,13 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                Date dob = resultSet.getDate("dob");
+                String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
-                int achievements = resultSet.getInt("achievements");
+                String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName, gender,  email,  password, dob, secQ, secA, achievements, practitioner);
-                user.setUserID(id);
+                user.setID(id);
                 return user;
             }
         } catch (Exception e) {
@@ -152,15 +177,16 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                Date dob = resultSet.getDate("dob");
+                String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
-                int achievements = resultSet.getInt("achievements");
+                String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName,  gender,  email,  password, dob, secQ, secA,  achievements, practitioner);
-                user.setUserID(id);
+                user.setID(id);
                 users.add(user);
             }
+            return users;
         } catch (Exception e) {
             e.printStackTrace();
         }

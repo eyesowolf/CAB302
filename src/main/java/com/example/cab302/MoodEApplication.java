@@ -48,6 +48,15 @@ public class MoodEApplication extends Application {
         stage.show();
     }
 
+    public void showForgotPasswordView(Stage stage) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("forgotPassword-view.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
+        stage.setTitle("Mood.E");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void showMoodInputView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("moodInput-view.fxml"));
         Parent root = fxmlLoader.load();

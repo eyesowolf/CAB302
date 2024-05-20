@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 public class LoginController {
     public VBox loginContainer;
@@ -45,8 +44,14 @@ public class LoginController {
         }
     }
     @FXML
-    protected void onForgotPassword() {
-        welcomeText.setText("Welcome to Recovery!");
+    protected void onForgotPassword(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showForgotPasswordView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean AuthenticateLogin(String username, String password){

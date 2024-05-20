@@ -1,6 +1,8 @@
 package com.example.cab302.dbmodelling;
 
-import java.util.Date;
+/**
+ * The User class hold the data for a specified user which gets retrieved from the DAO
+ */
 
 public class User {
     private int userID;
@@ -10,14 +12,27 @@ public class User {
     private String email;
     private String password;
     private String passwordSalt;
-    private Date DoB;
+    private String DoB;
     private String secQ;
     private String secA;
-    private int Achieves;
+    private String Achieves;
     private int userPractitioner;
     // private Blob prefs;
 
-    public User(String firstName, String lastName, String gender, String email, String password, Date DoB, String secQ, String secA, int Achieves, int userPractitioner) {
+    public User(String firstName, String lastName, String gender, String email, String password, String DoB, String secQ, String secA, String Achieves, int userPractitioner) {
+    /**
+     * User constructor class which is used to initialise the User class object
+     * @param firstName String: The first name of the user
+     * @param lastName String: The last name of the user
+     * @param gender String: The Gender of the user
+     * @param email String: The email of the user (Later used as their username)
+     * @param password String: The password of the user
+     * @param DoB String: The Date of Birth of the user in the format "yyyy-MM-dd"
+     * @param secQ String: The chosen security question
+     * @param secA String: The answer to the chosen security question
+     * @param Achieves String: The users awarded achievements stored as Hexadecimal
+     * @param userPractitioner int: The practitioner ID that this user has chosen to share their data with
+     */
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -30,11 +45,11 @@ public class User {
         this.userPractitioner = userPractitioner;
     }
 
-    public int getUserID() {
+    public int getID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setID(int userID) {
         this.userID = userID;
     }
 
@@ -68,11 +83,11 @@ public class User {
         this.password = password;
     }
 
-    public Date getDoB() {
+    public String getDoB() {
         return DoB;
     }
 
-    public void setDoB(Date dob) {
+    public void setDoB(String dob) {
         DoB = dob;
     }
 
@@ -92,11 +107,11 @@ public class User {
         secA = securityQuestionANS;
     }
 
-    public Integer getAchieves() {
+    public String getAchieves() {
         return Achieves;
     }
 
-    public void setAchieves(Integer achieves) {
+    public void setAchieves(String achieves) {
         Achieves = achieves;
     }
 

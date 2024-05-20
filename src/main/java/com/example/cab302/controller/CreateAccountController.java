@@ -13,11 +13,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.SecureRandom;
-import java.time.Instant;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
@@ -68,22 +65,30 @@ public class CreateAccountController {
 
     }
     @FXML
-    protected void onCreateAccount() {
+    protected void onCreateAccount(ActionEvent event) {
         SqliteUsersDAO userDAO = new SqliteUsersDAO();
         boolean fieldCheck = AuthenticateFields();
         if (fieldCheck){
+            DateFormat formatter = new SimpleDateFormat("yyyy-M-d");
             String firstName = firstNameTextField.getText();
             String lastName = lastNameTextField.getText();
             String gender = genderComboBoxField.getValue();
             String email = emailTextField.getText();
             String password = passwordPasswordField.getText();
-            Date dob = Date.from(dobDatePicker.getValue().atStartOfDay(defaultZoneId).toInstant());
+            String dob = formatter.format(Date.from(dobDatePicker.getValue().atStartOfDay(defaultZoneId).toInstant()));
             String securityQuestion = securityQuestionComboBoxField.getValue();
             String securityQuestionANS = securityQuestionAnswerTextField.getText();
-            int achievements = 0;
+            String achievements = "0";
             int practitioner = 0;
             User newUser = new User(firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner);
             userDAO.addUser(newUser);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            MoodEApplication app = new MoodEApplication();
+            try {
+                app.showLoginView(stage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -134,9 +139,9 @@ public class CreateAccountController {
         boolean emailCheck = AuthenticateEmail(emailTextField.getText());
         boolean firstNameCheck = firstNameTextField.getText().isEmpty();
         boolean lastnameCheck = lastNameTextField.getText().isEmpty();
-        boolean genderCheck = genderComboBoxField.getValue().isEmpty();
-        boolean dateCheck = dobDatePicker.getValue().isBefore(LocalDate.now());
-        boolean secQCheck  = securityQuestionComboBoxField.getValue().isEmpty();
+        boolean genderCheck = genderComboBoxField.getValue() == null;
+        boolean dateCheck = dobDatePicker.getValue() == null || dobDatePicker.getValue().isAfter(LocalDate.now());
+        boolean secQCheck  = securityQuestionComboBoxField.getValue() == null;
         boolean secACheck = securityQuestionAnswerTextField.getText().isEmpty();
         return (passwordCheck && emailCheck) && !(firstNameCheck || lastnameCheck || genderCheck || dateCheck || secQCheck || secACheck);
     }
