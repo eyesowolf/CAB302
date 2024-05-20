@@ -18,7 +18,7 @@ public class MoodEApplication extends Application {
     }
     @Override
     public void start(Stage stage) throws IOException {
-        showSettingsView(stage);
+        showSettingsView(stage); //changed to view settings becuase the login wasnt working
     }
 
     private void showHelloView(Stage stage) throws IOException {
@@ -61,7 +61,7 @@ public class MoodEApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("settings-view.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
-        stage.setTitle("Mood Input");
+        stage.setTitle("User Settings");
         stage.setScene(scene);
         stage.show();
     }
