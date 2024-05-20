@@ -90,9 +90,14 @@ public class SqliteUserDataDAO implements IUserDataDAO {
     public void updateUserData(UserData data) {
         try {
             String newDate = data.getDate();
-            Statement updateStatement = connection.createStatement();
-            String updateQuery = "UPDATE userData"+data.getUserID()+" SET entryName="+data.getName()+", entryDate="+newDate+", entryMood="+data.getMood()+", entryDescription="+data.getDescription()+" WHERE id="+data.getID();
-            updateStatement.execute(updateQuery);
+            PreparedStatement updateStatement = connection.prepareStatement("UPDATE ? SET entryName=?, entryDate=?, entryMood=?, entryDescription=? WHERE id=?");
+            updateStatement.setString(1, "userData"+data.getUserID());
+            updateStatement.setString(2, data.getName());
+            updateStatement.setString(3, newDate);
+            updateStatement.setString(4, data.getMood());
+            updateStatement.setString(5, data.getDescription());
+            updateStatement.setInt(6, data.getID());
+            updateStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }

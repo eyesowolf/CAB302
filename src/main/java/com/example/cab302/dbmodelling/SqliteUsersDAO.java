@@ -81,9 +81,19 @@ public class SqliteUsersDAO implements IUserDAO{
 
     public void updateUser(User user) {
         try {
-            Statement updateStatement = connection.createStatement();
-            String updateQuery = "UPDATE users SET firstName="+user.getFirstName()+", lastName="+user.getLastName()+", gender="+user.getGender()+", email="+user.getEmail()+", password="+user.getPassword()+", securityQuestion="+user.getSecQ()+", securityQuestionANS="+user.getSecA()+", achievements="+user.getAchieves()+", practitioner="+user.getUserPractitioner()+" WHERE id="+user.getID();
-            updateStatement.execute(updateQuery);
+            PreparedStatement updateStatement = connection.prepareStatement("UPDATE users SET firstName=?, lastName=?, gender=?, email=?, password=?, dob=?, securityQuestion=?, securityQuestionANS=?, prefs=?, achievements=?, practitioner=? WHERE id=?");
+            updateStatement.setString(1, user.getFirstName());
+            updateStatement.setString(2, user.getLastName());
+            updateStatement.setString(3, user.getGender());
+            updateStatement.setString(4, user.getEmail());
+            updateStatement.setString(5, user.getPassword());
+            updateStatement.setString(6, user.getDoB());
+            updateStatement.setString(7, user.getSecQ());
+            updateStatement.setString(8, user.getSecA());
+            updateStatement.setString(10, user.getAchieves());
+            updateStatement.setInt(11, user.getUserPractitioner());
+            updateStatement.setInt(12, user.getID());
+            updateStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
