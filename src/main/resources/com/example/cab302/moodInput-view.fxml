@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302.controller.moodInputController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -75,7 +75,31 @@
                         <Font size="20.0" />
                     </font>
                 </Button>
+<<<<<<< Updated upstream
                 <Button layoutX="118.0" layoutY="511.0" mnemonicParsing="false" text="Button">
+=======
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="452.0" layoutX="323.0" layoutY="245.0" stroke="TRANSPARENT" strokeType="INSIDE" width="888.0" />
+                <RadioButton fx:id="happyRadioButton" layoutX="700.0" layoutY="250.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Happy" />
+                <RadioButton fx:id="angryRadioButton" layoutX="700.0" layoutY="310.0" mnemonicParsing="false" text="Angry" />
+                <RadioButton fx:id="anxiousRadioButton" layoutX="700.0" layoutY="280.0" mnemonicParsing="false" text="Anxious" />
+                <RadioButton fx:id="upsetRadioButton" layoutX="700.0" layoutY="340.0" mnemonicParsing="false" text="Upset" />
+                <RadioButton fx:id="stressedRadioButton" layoutX="700.0" layoutY="400.0" mnemonicParsing="false" text="Stressed" />
+                <RadioButton fx:id="inspiredRadioButton" layoutX="700.0" layoutY="430.0" mnemonicParsing="false" text="Inspired" />
+                <RadioButton fx:id="confidentRadioButton" layoutX="700.0" layoutY="460.0" mnemonicParsing="false" text="Confident" />
+                <RadioButton fx:id="depressedRadioButton" layoutX="700.0" layoutY="370.0" mnemonicParsing="false" text="Depressed" />
+                <Button layoutX="1087.0" layoutY="626.0" mnemonicParsing="false" style="-fx-background-color: #143C49;" text="Submit" textFill="WHITE" onAction="#handleSubmit">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Button>
+                <RadioButton fx:id="tiredRadioButton" layoutX="700.0" layoutY="490.0" mnemonicParsing="false" text="Tired" />
+                <Text fill="WHITE" layoutX="652.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[TODAYS DATE]" wrappingWidth="182.0341796875">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Text>
+                <Button layoutX="55.0" layoutY="346.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Button" textFill="WHITE">
+>>>>>>> Stashed changes
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -156,6 +180,34 @@
                         <Font size="35.0" />
                     </font>
                 </Text>
+<<<<<<< Updated upstream
+=======
+                <ImageView fitHeight="210.0" fitWidth="365.0">
+                    <image>
+                        <Image url="@images/Mood.e_LightMode.png" />
+                    </image>
+                </ImageView>
+                <Text fill="#143c49" layoutX="424.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session Details" wrappingWidth="81.0">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Text fill="WHITE" layoutX="581.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOOD TRACKING" wrappingWidth="324.0">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Text>
+                <Text fill="#143c49" layoutX="660.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[Session Start Time]" textAlignment="CENTER" wrappingWidth="166.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+                <Text fill="#143c49" layoutX="660.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total: 00h 00m" textAlignment="CENTER" wrappingWidth="166.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+>>>>>>> Stashed changes
             </children>
         </AnchorPane>
     </children>

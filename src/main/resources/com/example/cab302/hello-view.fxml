@@ -14,7 +14,14 @@
     </padding>
 
     <Label fx:id="welcomeText"/>
+<<<<<<< Updated upstream
     <Button text="Hello!" onAction="#onHelloButtonClick"/>
     <Button text="Switch to Mood Input" onAction="#switchToMoodInput"/>
 
 </VBox>
+=======
+    <Button text="ENTER" onAction="#onHelloButtonClick"/>
+    <Button text="Show Data Visualization" onAction="#showDataVisualisation"/>
+    <?scenebuilder-stylesheet ../stylesheet_light.css?>
+</VBox>
+>>>>>>> Stashed changes
