@@ -17,6 +17,7 @@ public class moodInputController {
 
     @FXML
     private RadioButton happyRadioButton;
+<<<<<<< Updated upstream
     @FXML
     private RadioButton angryRadioButton;
     @FXML
@@ -36,6 +37,33 @@ public class moodInputController {
 
     private ToggleGroup moodGroup;
 
+=======
+
+    @FXML
+    private RadioButton anxiousRadioButton;
+
+    @FXML
+    private RadioButton angryRadioButton;
+
+    @FXML
+    private RadioButton upsetRadioButton;
+
+    @FXML
+    private RadioButton depressedRadioButton;
+
+    @FXML
+    private RadioButton stressedRadioButton;
+
+    @FXML
+    private RadioButton inspiredRadioButton;
+
+    @FXML
+    private RadioButton confidentRadioButton;
+
+    @FXML
+    private RadioButton tiredRadioButton;
+
+>>>>>>> Stashed changes
     public void initialize() {
         // Create linear gradient for background
         LinearGradient gradient = new LinearGradient(0, 0, 0, 1, true, null,
@@ -45,6 +73,7 @@ public class moodInputController {
         // Set background with the gradient
         root.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #000080, #FFFFFF);");
 
+<<<<<<< Updated upstream
         // Initialize database
         DatabaseManager.createNewDatabase();
 
@@ -73,3 +102,20 @@ public class moodInputController {
         }
     }
 }
+=======
+        // Create a ToggleGroup for the RadioButtons
+        ToggleGroup moodToggleGroup = new ToggleGroup();
+
+        // Add the RadioButtons to the ToggleGroup
+        happyRadioButton.setToggleGroup(moodToggleGroup);
+        anxiousRadioButton.setToggleGroup(moodToggleGroup);
+        angryRadioButton.setToggleGroup(moodToggleGroup);
+        upsetRadioButton.setToggleGroup(moodToggleGroup);
+        depressedRadioButton.setToggleGroup(moodToggleGroup);
+        stressedRadioButton.setToggleGroup(moodToggleGroup);
+        inspiredRadioButton.setToggleGroup(moodToggleGroup);
+        confidentRadioButton.setToggleGroup(moodToggleGroup);
+        tiredRadioButton.setToggleGroup(moodToggleGroup);
+    }
+}
+>>>>>>> Stashed changes
