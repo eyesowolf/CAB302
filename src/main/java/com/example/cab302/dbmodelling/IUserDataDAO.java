@@ -30,11 +30,11 @@ public interface IUserDataDAO
 
     /**
      * returns a list of all the users data between the dates given
-     * @param start The date at which to start looking for data.
-     * @param end The date at which to stop looking for data.
+     * @param startDate The date at which to start looking for data.
+     * @param endDate The date at which to stop looking for data.
      * @return Returns a list of user data entries
      */
-    public List<UserData> getUserDataInRange(String startDate, String endDate);
+    public List<UserData> getUserDataInRange(int startDate, int endDate);
 
     /**
      * Deletes a datapoint from the table of userData.

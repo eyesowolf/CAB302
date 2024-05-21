@@ -10,9 +10,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 public class MoodEApplication extends Application {
-    private IUserDAO userDAO;
+     IUserDAO userDAO;
     public MoodEApplication(){
         userDAO = new SqliteUsersDAO();
     }
@@ -73,6 +74,17 @@ public class MoodEApplication extends Application {
         stage.setTitle("Mood Input");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public int convertDateToEpoch(String date){
+        long epoch;
+        try {
+            epoch = new java.text.SimpleDateFormat("yyyy-M-d").parse(date).getTime() / 1000;
+            return (int)epoch;
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public static void main(String[] args) {
