@@ -10,14 +10,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 public class MoodEApplication extends Application {
-    private IUserDAO userDAO;
-
-    public MoodEApplication() {
+     IUserDAO userDAO;
+    public MoodEApplication(){
         userDAO = new SqliteUsersDAO();
     }
-
     @Override
     public void start(Stage stage) throws IOException {
         showLoginView(stage);
@@ -26,16 +25,16 @@ public class MoodEApplication extends Application {
     private void showHelloView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("hello-view.fxml"));
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1280, 800);
+        Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }
 
-    public void showLoginView(Stage stage) throws IOException {
+    public void showLoginView(Stage stage) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("login-view.fxml"));
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1280, 800);
+        Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
         stage.setTitle("Mood.E");
         stage.setScene(scene);
         stage.show();
@@ -44,16 +43,16 @@ public class MoodEApplication extends Application {
     public void showCreateAccountView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("createAccount-view.fxml"));
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1280, 800);
+        Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
         stage.setTitle("Mood.E");
         stage.setScene(scene);
         stage.show();
     }
 
-    public void showForgotPasswordView(Stage stage) throws IOException {
+    public void showForgotPasswordView(Stage stage) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("forgotPassword-view.fxml"));
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1280, 800);
+        Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
         stage.setTitle("Mood.E");
         stage.setScene(scene);
         stage.show();
@@ -62,27 +61,30 @@ public class MoodEApplication extends Application {
     public void showMoodInputView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("moodInput-view.fxml"));
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1280, 800);
+        Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
         stage.setTitle("Mood Input");
         stage.setScene(scene);
         stage.show();
     }
-    public void showMoodChart(Stage stage) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("moodChart-view.fxml"));
+
+    public void showSettingsView(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("settings-view.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
-        stage.setTitle("Mood.E");
+        stage.setTitle("Mood Input");
         stage.setScene(scene);
         stage.show();
     }
 
-    public void showDataVisualizationView(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("dataVisualization-view.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1280, 800);
-        stage.setTitle("Data Visualization");
-        stage.setScene(scene);
-        stage.show();
+    public int convertDateToEpoch(String date){
+        long epoch;
+        try {
+            epoch = new java.text.SimpleDateFormat("yyyy-M-d").parse(date).getTime() / 1000;
+            return (int)epoch;
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public static void main(String[] args) {

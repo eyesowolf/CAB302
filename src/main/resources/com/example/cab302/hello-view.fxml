@@ -3,25 +3,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<?import com.example.cab302.HelloApplication?>
-
 <?import javafx.scene.control.Button?>
+
+<?import java.lang.String?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.cab302.controller.HelloController">
-
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
     <Label fx:id="welcomeText"/>
-<<<<<<< Updated upstream
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-    <Button text="Switch to Mood Input" onAction="#switchToMoodInput"/>
-
-</VBox>
-=======
     <Button text="ENTER" onAction="#onHelloButtonClick"/>
-    <Button text="Show Data Visualization" onAction="#showDataVisualisation"/>
     <?scenebuilder-stylesheet ../stylesheet_light.css?>
 </VBox>
->>>>>>> Stashed changes

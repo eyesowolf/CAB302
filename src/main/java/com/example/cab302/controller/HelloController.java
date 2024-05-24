@@ -1,7 +1,7 @@
 package com.example.cab302.controller;
 
 import com.example.cab302.ApplicationTracker;
-import com.example.cab302.HelloApplication;
+import com.example.cab302.MoodEApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -22,7 +22,7 @@ public class HelloController {
 
     public void switchToMoodInput(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        HelloApplication app = new HelloApplication();
+        MoodEApplication app = new MoodEApplication();
         try {
             app.showMoodInputView(stage);
         } catch (IOException e) {

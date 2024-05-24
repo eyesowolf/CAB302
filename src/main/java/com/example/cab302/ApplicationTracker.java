@@ -24,11 +24,6 @@ public class ApplicationTracker {
          * This Method is called to return the name of the in focus window as a string. on macOS there is no further data sanitisation needed
          */
         String result = null;
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         interface Psapi extends StdCallLibrary {
             Psapi INSTANCE = (Psapi) Native.loadLibrary("Psapi", Psapi.class);
 

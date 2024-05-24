@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
@@ -9,11 +10,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<<<<<<< Updated upstream
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302.controller.moodInputController">
-=======
-<VBox maxHeight="-Infinity" fx:id="root" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302.controller.moodInputController">
->>>>>>> Stashed changes
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -56,209 +53,88 @@
         </MenuBar>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" stroke="BLACK" strokeType="INSIDE" width="1280.0">
+                <Rectangle arcHeight="5.0" arcWidth="5.0" height="780.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1280.0">
                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.21904761904761902">
                             <stops>
-                                <Stop color="#2e5f8d" />
+                                <Stop color="#2a6274" />
                                 <Stop color="WHITE" offset="1.0" />
                             </stops>
                         </LinearGradient>
                     </fill>
                 </Rectangle>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e4d5b" height="288.0" layoutX="66.0" layoutY="339.0" opacity="0.46" stroke="BLACK" strokeType="INSIDE" width="198.0" />
-                <Circle fill="DODGERBLUE" layoutX="112.0" layoutY="105.0" radius="99.0" stroke="BLACK" strokeType="INSIDE" />
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e4d5b" height="548.0" layoutX="311.0" layoutY="148.0" opacity="0.46" stroke="BLACK" strokeType="INSIDE" width="731.0" />
-                <Button layoutX="117.0" layoutY="407.0" mnemonicParsing="false" text="Button">
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="569.0" layoutX="32.0" layoutY="211.0" opacity="0.46" stroke="TRANSPARENT" strokeType="INSIDE" width="214.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a6273" height="569.0" layoutX="307.0" layoutY="179.0" stroke="TRANSPARENT" strokeType="INSIDE" width="924.0" />
+                <Button layoutX="55.0" layoutY="230.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Button" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Button>
-                <Button layoutX="118.0" layoutY="461.0" mnemonicParsing="false" text="Button">
+                <Button layoutX="55.0" layoutY="287.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Button" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Button>
-<<<<<<< Updated upstream
-                <Button layoutX="118.0" layoutY="511.0" mnemonicParsing="false" text="Button">
-=======
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="452.0" layoutX="323.0" layoutY="245.0" stroke="TRANSPARENT" strokeType="INSIDE" width="888.0" />
-<<<<<<< Updated upstream
-                <RadioButton fx:id="happyRadioButton" layoutX="700.0" layoutY="250.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Happy" />
-                <RadioButton fx:id="angryRadioButton" layoutX="700.0" layoutY="310.0" mnemonicParsing="false" text="Angry" />
-                <RadioButton fx:id="anxiousRadioButton" layoutX="700.0" layoutY="280.0" mnemonicParsing="false" text="Anxious" />
-                <RadioButton fx:id="upsetRadioButton" layoutX="700.0" layoutY="340.0" mnemonicParsing="false" text="Upset" />
-                <RadioButton fx:id="stressedRadioButton" layoutX="700.0" layoutY="400.0" mnemonicParsing="false" text="Stressed" />
-                <RadioButton fx:id="inspiredRadioButton" layoutX="700.0" layoutY="430.0" mnemonicParsing="false" text="Inspired" />
-                <RadioButton fx:id="confidentRadioButton" layoutX="700.0" layoutY="460.0" mnemonicParsing="false" text="Confident" />
-                <RadioButton fx:id="depressedRadioButton" layoutX="700.0" layoutY="370.0" mnemonicParsing="false" text="Depressed" />
-                <Button layoutX="1087.0" layoutY="626.0" mnemonicParsing="false" style="-fx-background-color: #143C49;" text="Submit" textFill="WHITE" onAction="#handleSubmit">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Button>
-                <RadioButton fx:id="tiredRadioButton" layoutX="700.0" layoutY="490.0" mnemonicParsing="false" text="Tired" />
-                <Text fill="WHITE" layoutX="652.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[TODAYS DATE]" wrappingWidth="182.0341796875">
-                    <font>
-                        <Font name="System Bold" size="24.0" />
-                    </font>
-                </Text>
-                <Button layoutX="55.0" layoutY="346.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Button" textFill="WHITE">
->>>>>>> Stashed changes
-=======
-
-                <RadioButton fx:id="happyRadioButton" layoutX="700.0" layoutY="250.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Happy" />
-                <RadioButton fx:id="anxiousRadioButton" layoutX="700.0" layoutY="280.0" mnemonicParsing="false" text="Anxious" />
-                <RadioButton fx:id="angryRadioButton" layoutX="700.0" layoutY="310.0" mnemonicParsing="false" text="Angry" />
-                <RadioButton fx:id="upsetRadioButton" layoutX="700.0" layoutY="340.0" mnemonicParsing="false" text="Upset" />
-                <RadioButton fx:id="depressedRadioButton" layoutX="700.0" layoutY="370.0" mnemonicParsing="false" text="Depressed" />
-                <RadioButton fx:id="stressedRadioButton" layoutX="700.0" layoutY="400.0" mnemonicParsing="false" text="Stressed" />
-                <RadioButton fx:id="inspiredRadioButton" layoutX="700.0" layoutY="430.0" mnemonicParsing="false" text="Inspired" />
-                <RadioButton fx:id="confidentRadioButton" layoutX="700.0" layoutY="460.0" mnemonicParsing="false" text="Confident" />
-                <RadioButton fx:id="tiredRadioButton" layoutX="700.0" layoutY="490.0" mnemonicParsing="false" text="Tired" />
-
+                <RadioButton layoutX="700.0" layoutY="310.0" mnemonicParsing="false" text="Angry" />
+                <RadioButton layoutX="700.0" layoutY="250.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Happy" />
+                <RadioButton layoutX="700.0" layoutY="280.0" mnemonicParsing="false" text="Anxious" />
+                <RadioButton layoutX="700.0" layoutY="340.0" mnemonicParsing="false" text="Upset" />
+                <RadioButton layoutX="700.0" layoutY="400.0" mnemonicParsing="false" text="Stressed" />
+                <RadioButton layoutX="700.0" layoutY="430.0" mnemonicParsing="false" text="Inspired" />
+                <RadioButton layoutX="700.0" layoutY="460.0" mnemonicParsing="false" text="Confident" />
+                <RadioButton layoutX="700.0" layoutY="370.0" mnemonicParsing="false" text="Depressed" />
                 <Button layoutX="1087.0" layoutY="626.0" mnemonicParsing="false" style="-fx-background-color: #143C49;" text="Submit" textFill="WHITE">
->>>>>>> Stashed changes
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Button>
-<<<<<<< Updated upstream
-                <Rectangle arcHeight="5.0" arcWidth="5.0" height="443.0" layoutX="338.0" layoutY="185.0" stroke="BLACK" strokeType="INSIDE" width="673.0">
-                    <fill>
-                        <LinearGradient endX="1.0" endY="0.6553398058252426" startX="1.0">
-                            <stops>
-                                <Stop color="#768ea4" />
-                                <Stop color="WHITE" offset="1.0" />
-                            </stops>
-                        </LinearGradient>
-                    </fill>
-                </Rectangle>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7290ab" height="428.0" layoutX="667.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" width="338.0" />
-                <RadioButton layoutX="711.0" layoutY="309.0" mnemonicParsing="false" text="Happy">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </RadioButton>
-                <RadioButton layoutX="707.0" layoutY="210.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="89.0" text="Sad  ">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </RadioButton>
-                <RadioButton layoutX="707.0" layoutY="260.0" mnemonicParsing="false" text="Angry">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </RadioButton>
-                <RadioButton layoutX="708.0" layoutY="353.0" mnemonicParsing="false" text="Upset">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </RadioButton>
-                <RadioButton layoutX="710.0" layoutY="446.0" mnemonicParsing="false" text="Depressed">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </RadioButton>
-                <RadioButton layoutX="713.0" layoutY="490.0" mnemonicParsing="false" text="Inspired">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </RadioButton>
-                <RadioButton layoutX="713.0" layoutY="533.0" mnemonicParsing="false" text="Confident">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </RadioButton>
-                <RadioButton layoutX="711.0" layoutY="399.0" mnemonicParsing="false" text="Tired">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </RadioButton>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="53.0" layoutX="903.0" layoutY="554.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" width="94.0" />
-                <Button layoutX="919.0" layoutY="565.0" mnemonicParsing="false" text="Submit" />
-                <RadioButton layoutX="711.0" layoutY="580.0" mnemonicParsing="false" text="Stressed">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </RadioButton>
-                <Text layoutX="608.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[TODAYS DATE]" wrappingWidth="118.0341796875" />
-                <Button layoutX="118.0" layoutY="565.0" mnemonicParsing="false" text="Button">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Button>
-                <Button layoutX="946.0" layoutY="644.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="65.0" text="Today" />
-                <Button layoutX="338.0" layoutY="644.0" mnemonicParsing="false" text="Yesterday" />
-                <Text layoutX="381.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How are you today?.." wrappingWidth="198.0">
-                    <font>
-                        <Font size="34.0" />
-                    </font>
-                </Text>
-                <Text layoutX="102.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu" textAlignment="CENTER" wrappingWidth="118.0341796875">
-                    <font>
-                        <Font size="35.0" />
-                    </font>
-                </Text>
-<<<<<<< Updated upstream
-=======
-                <ImageView fitHeight="210.0" fitWidth="365.0">
-                    <image>
-                        <Image url="@images/Mood.e_LightMode.png" />
-                    </image>
-                </ImageView>
-                <Text fill="#143c49" layoutX="424.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session Details" wrappingWidth="81.0">
-=======
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+                <RadioButton layoutX="700.0" layoutY="490.0" mnemonicParsing="false" text="Tired" />
                 <Text fill="WHITE" layoutX="652.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[TODAYS DATE]" wrappingWidth="182.0341796875">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Text>
+                <Button layoutX="55.0" layoutY="346.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Button" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font size="20.0" />
                     </font>
-                </Text>
+                </Button>
                 <Button layoutX="1111.0" layoutY="708.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Tomorrow" />
                 <Button layoutX="333.0" layoutY="708.0" mnemonicParsing="false" text="Yesterday" />
                 <Text fill="#143c49" layoutX="401.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today I feel..." wrappingWidth="111.0">
->>>>>>> Stashed changes
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <Text fill="WHITE" layoutX="581.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOOD TRACKING" wrappingWidth="324.0">
+                <Text fill="WHITE" layoutX="87.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MENU" textAlignment="CENTER" wrappingWidth="118.0341796875">
                     <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font size="24.0" />
                     </font>
                 </Text>
-<<<<<<< Updated upstream
-=======
-                <ImageView fitHeight="210.0" fitWidth="365.0">
-                    <image>
-                        <Image url="@images/Mood.e_LightMode.png" />
-                    </image>
-                </ImageView>
-                <Text fill="#143c49" layoutX="424.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session Details" wrappingWidth="81.0">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Text>
-                <Text fill="WHITE" layoutX="581.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOOD TRACKING" wrappingWidth="324.0">
-                    <font>
-                        <Font name="System Bold" size="36.0" />
-                    </font>
-                </Text>
->>>>>>> Stashed changes
-                <Text fill="#143c49" layoutX="660.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[Session Start Time]" textAlignment="CENTER" wrappingWidth="166.0">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Text>
-                <Text fill="#143c49" layoutX="660.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total: 00h 00m" textAlignment="CENTER" wrappingWidth="166.0">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Text>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+            <ImageView fitHeight="210.0" fitWidth="365.0">
+               <image>
+                  <Image url="@images/Mood.e_LightMode.png" />
+               </image>
+            </ImageView>
+            <Text fill="#143c49" layoutX="424.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session Details" wrappingWidth="81.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="581.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOOD TRACKING" wrappingWidth="324.0">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Text fill="#143c49" layoutX="660.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[Session Start Time]" textAlignment="CENTER" wrappingWidth="166.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#143c49" layoutX="660.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total: 00h 00m" textAlignment="CENTER" wrappingWidth="166.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
             </children>
         </AnchorPane>
     </children>
