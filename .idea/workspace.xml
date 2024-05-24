@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ab311d6b-2b3e-40e2-aadf-20bd3d30ce43" name="Changes" comment="merge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/MoodEApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/MoodEApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/MoodChartViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/MoodChartViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/MoodInputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/MoodInputController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/dbmodelling/SqliteUsersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/dbmodelling/SqliteUsersDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cab302/MoodChartView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cab302/MoodChartView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cab302/dataVisualization-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

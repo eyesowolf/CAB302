@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -245,22 +246,31 @@ public class SqliteUsersDAO implements IUserDAO{
         List<moodData> moodDataList = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            String query = "SELECT * FROM moods";
-            ResultSet resultSet = statement.executeQuery(query);
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM moods");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 int userId = resultSet.getInt("userId");
                 String moodType = resultSet.getString("moodType");
                 String date = resultSet.getString("date");
                 String description = resultSet.getString("description");
-
-                moodData mood = new moodData(id, "Mood Entry",date, moodType, description, userId);
-                moodDataList.add(mood);
+                moodData moodData = new moodData(id, "Mood Entry", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date), moodType, description, userId);
+                moodDataList.add(moodData);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return moodDataList;
+    }
+
+    private int convertDateToEpoch(String date) {
+        long epoch;
+        try {
+            epoch = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date).getTime() / 1000;
+            return (int) epoch;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
     }
 
