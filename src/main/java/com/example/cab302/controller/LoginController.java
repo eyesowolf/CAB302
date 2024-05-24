@@ -37,7 +37,7 @@ public class LoginController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodChart(stage);
+            app.showMoodChartView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }

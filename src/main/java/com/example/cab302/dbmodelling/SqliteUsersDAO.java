@@ -1,12 +1,6 @@
 package com.example.cab302.dbmodelling;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
-public class SqliteUsersDAO implements IUserDAO {
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -21,30 +15,40 @@ public class SqliteUsersDAO implements IUserDAO{
     public SqliteUsersDAO() {
         connection = SqliteConnection.getInstance();
         createTable();
-        //insertSammpleData();
-    }
-
         insertSammpleData();
     }
     private void createTable() {
-        // Create table if not exists
+        // Create tables if they do not exist
         try {
             Statement statement = connection.createStatement();
-            String query = "CREATE TABLE IF NOT EXISTS users ("
+
+            // Create users table
+            String usersTableQuery = "CREATE TABLE IF NOT EXISTS users ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "firstName VARCHAR NOT NULL,"
                     + "lastName VARCHAR NOT NULL,"
                     + "gender VARCHAR NOT NULL,"
                     + "email VARCHAR NOT NULL,"
                     + "password NVARCHAR NOT NULL,"
-                    + "dob INTTEGER NOT NULL,"
+                    + "dob INTEGER NOT NULL,"
                     + "securityQuestion VARCHAR NOT NULL,"
                     + "securityQuestionANS VARCHAR NOT NULL,"
                     + "prefs BLOB,"
                     + "achievements VARCHAR,"
                     + "practitioner INT"
                     + ")";
-            statement.execute(query);
+            statement.execute(usersTableQuery);
+
+            // Create moods table
+            String moodsTableQuery = "CREATE TABLE IF NOT EXISTS moods ("
+                    + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + "userId INTEGER,"
+                    + "moodType VARCHAR,"
+                    + "date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
+                    + "description TEXT"
+                    + ")";
+            statement.execute(moodsTableQuery);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -68,6 +72,7 @@ public class SqliteUsersDAO implements IUserDAO{
             e.printStackTrace();
         }
     }
+
 
     public void addUser(User user) {
         try {
@@ -206,24 +211,38 @@ public class SqliteUsersDAO implements IUserDAO{
         return null;
     }
 
-    public List<moodData> getMoodDataForVisualization() {
-        List<moodData> moodDataList = new ArrayList<>();
+    private void createMoodsTable() {
         try {
             Statement statement = connection.createStatement();
-            String query = "SELECT id, moodType, date, description FROM moods";
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String moodType = resultSet.getString("moodType");
-                String date = resultSet.getString("date");
-                String description = resultSet.getString("description");
-                moodData mood = new moodData(id, "", new SimpleDateFormat("yyyy-MM-dd").parse(date), moodType, description, 0);
-                moodDataList.add(mood);
-            }
-            return moodDataList;
+            String query = "CREATE TABLE IF NOT EXISTS moods ("
+                    + "UserID INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + "userId INTEGER,"
+                    + "moodType VARCHAR,"
+                    + "date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
+                    + "description TEXT"
+                    + ")";
+            statement.execute(query);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void saveMoodData(moodData moodData) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO moods (UserID, moodType, description) VALUES (?, ?, ?)"
+            );
+            statement.setInt(1, moodData.getEntryUserID()); // Assuming moodData has getUserId() method
+            statement.setString(2, moodData.getEntryMood());
+            statement.setString(3, moodData.getEntryDescription());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<moodData> getMoodDataByUserId(int currentUserId) {
+        //get the current user ID and pass it to a table.
         return null;
     }
 }
