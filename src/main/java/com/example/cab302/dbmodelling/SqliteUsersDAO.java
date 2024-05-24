@@ -67,6 +67,7 @@ public class SqliteUsersDAO implements IUserDAO{
             statement.setString(6, user.getDoB());
             statement.setString(7, user.getSecQ());
             statement.setString(8, user.getSecA());
+            statement.setBytes(9, user.getPrefs());
             statement.setString(10, user.getAchieves());
             statement.setInt(11, user.getUserPractitioner());
             statement.executeUpdate();
@@ -90,6 +91,7 @@ public class SqliteUsersDAO implements IUserDAO{
             updateStatement.setString(6, user.getDoB());
             updateStatement.setString(7, user.getSecQ());
             updateStatement.setString(8, user.getSecA());
+            updateStatement.setBytes(9, user.getPrefs());
             updateStatement.setString(10, user.getAchieves());
             updateStatement.setInt(11, user.getUserPractitioner());
             updateStatement.setInt(12, user.getID());
@@ -124,6 +126,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
+                byte[] prefs = resultSet.getBytes("prefs");
                 String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName,  gender,  email,  password, dob,  secQ, secA ,achievements, practitioner);
@@ -152,6 +155,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
+                byte[] prefs = resultSet.getBytes("prefs");
                 String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName, gender,  email,  password, dob, secQ, secA, achievements, practitioner);
@@ -180,6 +184,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String dob = resultSet.getString("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
+                byte[] prefs = resultSet.getBytes("prefs");
                 String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
                 User user = new User(firstName,  lastName,  gender,  email,  password, dob, secQ, secA,  achievements, practitioner);

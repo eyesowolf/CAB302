@@ -17,7 +17,7 @@ public class User {
     private String secA;
     private String Achieves;
     private int userPractitioner;
-    // private Blob prefs;
+    private byte[] prefs;
 
     public User(String firstName, String lastName, String gender, String email, String password, String DoB, String secQ, String secA, String Achieves, int userPractitioner) {
     /**
@@ -106,6 +106,10 @@ public class User {
     public void setSecA(String securityQuestionANS) {
         secA = securityQuestionANS;
     }
+
+    public byte[] getPrefs() {return prefs; }
+
+    public void setPrefs(byte[] preferences) { this.prefs = preferences; }
 
     public String getAchieves() {
         return Achieves;
