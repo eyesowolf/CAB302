@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LoginController {
+    public static User currentUser; // Add this line
     public VBox loginContainer;
     public TextField usernameTextField;
     public PasswordField passwordPasswordField;
@@ -56,8 +57,14 @@ public class LoginController {
     private boolean AuthenticateLogin(String username, String password){
         SqliteUsersDAO userDAO = new SqliteUsersDAO();
         User user = userDAO.getUserByEmail(username);
-        String passwordTrue = user.getPassword();
-        return Objects.equals(password, passwordTrue);
+        if (user != null) {
+            String passwordTrue = user.getPassword();
+            if (Objects.equals(password, passwordTrue)) {
+                currentUser = user;  // Set the current user
+                return true;
+            }
+        }
+        return false;
     }
 
     public void switchToMoodInput(ActionEvent event) {
@@ -70,3 +77,10 @@ public class LoginController {
         }
     }
 }
+
+//    private boolean AuthenticateLogin(String username, String password){
+//        SqliteUsersDAO userDAO = new SqliteUsersDAO();
+//        User user = userDAO.getUserByEmail(username);
+//        String passwordTrue = user.getPassword();
+//        return Objects.equals(password, passwordTrue);
+//    }

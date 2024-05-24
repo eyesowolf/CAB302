@@ -1,8 +1,9 @@
 package com.example.cab302;
 
-
 import java.util.BitSet;
 import java.io.*;
+
+import com.example.cab302.controller.LoginController;
 import com.example.cab302.dbmodelling.SqliteUsersDAO;
 import com.example.cab302.dbmodelling.User;
 
@@ -10,9 +11,18 @@ public class SettingsManager {
 
     public UserSettings loadSettings() {
         UserSettings userSettings = new UserSettings();
-        SqliteUsersDAO usersDAO = new SqliteUsersDAO();
-        User currentUser = usersDAO.getUserById(3);  //number(3) needs to be changed to the id of the user that is currently logged in
+        User currentUser = LoginController.currentUser;  // Get the current user
+
+        if (currentUser == null) {
+            throw new NullPointerException("Current user is not set.");
+        }
+
         byte[] prefs = currentUser.getPrefs();
+
+        // Initialize prefs with default values if null
+        if (prefs == null) {
+            prefs = new byte[]{0};
+        }
 
         boolean[] prefValues = byteSeperate(prefs);
         userSettings.setTrackUsageEnabled(prefValues[0]);
@@ -25,19 +35,19 @@ public class SettingsManager {
     }
 
     public void saveSettings(UserSettings userSettings) {
+        User currentUser = LoginController.currentUser;  // Get the current user
 
-        // below is blob data order
-        //     trackUsageCheckBox; !
-        //    facialRecognitionCheckBox; !
-        //    themeToggleButton; !
-        //    gameFeaturesCheckBox; !
-        //    achievementFeaturesCheckBox; !
-        //    notificationsCheckBox; !
-
-        SqliteUsersDAO usersDAO = new SqliteUsersDAO();
-        User currentUser = usersDAO.getUserById(3);  //number(3) needs to be changed to the id of the user that is currently logged in
+        if (currentUser == null) {
+            throw new NullPointerException("Current user is not set.");
+        }
 
         byte[] prefs = currentUser.getPrefs();
+
+        // Initialize prefs with default values if null
+        if (prefs == null) {
+            prefs = new byte[]{0};
+        }
+
 
         boolean[] prefValues = byteSeperate(prefs);
         prefValues[0] = userSettings.isTrackUsageEnabled();
@@ -49,11 +59,14 @@ public class SettingsManager {
         prefs = byteCombine(prefValues);
         currentUser.setPrefs(prefs);
 
+        SqliteUsersDAO usersDAO = new SqliteUsersDAO();
         usersDAO.updateUser(currentUser);
-
     }
 
     private static boolean[] byteSeperate(byte[] input) {
+        if (input == null) {
+            return new boolean[8]; // Return default boolean array if input is null
+        }
         BitSet bits = BitSet.valueOf(input);
         boolean[] output = new boolean[input.length * 8];
         for (int i = bits.nextSetBit(0); i != -1; i = bits.nextSetBit(i+1)) {
@@ -63,15 +76,14 @@ public class SettingsManager {
     }
 
     private static byte[] byteCombine(boolean[] input) {
-        byte[] output = new byte[input.length / 8];
+        byte[] output = new byte[(input.length +7) / 8];
         for (int entry = 0; entry < output.length; entry++) {
             for (int bit = 0; bit < 8; bit++) {
-                if (input[entry * 8 + bit]) {
+                if (entry * 8 + bit < input.length && input[entry * 8 + bit]) {
                     output[entry] |= (128 >> bit);
                 }
             }
         }
-
         return output;
     }
 }

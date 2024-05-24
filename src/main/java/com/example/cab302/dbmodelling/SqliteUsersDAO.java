@@ -49,10 +49,16 @@ public class SqliteUsersDAO implements IUserDAO{
                 int result = resultSet.getInt(1);
                 if (result == 0) {
                     Statement insertStatement = connection.createStatement();
+                    // Initialize prefs with default values
+                    byte[] defaultPrefs = new byte[]{0}; // Example initialization, adjust as necessary
                     String insertQuery = "INSERT INTO users (firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner) VALUES "
                             + "('John','Doe','Male','john.doe@gmail.com','P@ssw0rd','958867200','question','answer','1','0'),"
                             + "('Jane','Doe','Female','jane.doe@gmail.com','P@ssw0rd','958867200','question','answer','1','0')";
-                    insertStatement.execute(insertQuery);
+                    PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+                    preparedStatement.setBytes(1, defaultPrefs);
+                    preparedStatement.setBytes(2, defaultPrefs);
+
+                    preparedStatement.execute();
                 }
             }
         } catch (Exception e){

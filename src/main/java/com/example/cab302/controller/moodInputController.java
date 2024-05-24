@@ -43,6 +43,4 @@ public class moodInputController {
             e.printStackTrace();
         }
     }
-
 }
-
