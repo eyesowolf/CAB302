@@ -20,7 +20,7 @@
         <CheckBox text="Enable Notifications" fx:id="notificationsCheckBox"/>
         <HBox alignment="CENTER" spacing="20.0">
             <Button text="Save Settings" onAction="#onSaveSettings"/>
-            <Button text="Cancel" onAction="#onCancelSettings"/>
+            <Button fx:id="cancelButton" text="Cancel" onAction="#onCancelSettings"/>
         </HBox>
     </VBox>
 </VBox>

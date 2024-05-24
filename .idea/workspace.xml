@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab311d6b-2b3e-40e2-aadf-20bd3d30ce43" name="Changes" comment="settings now appears on the menu after logging in still yet to work">
+    <list default="true" id="ab311d6b-2b3e-40e2-aadf-20bd3d30ce43" name="Changes" comment="settings page now opens when button is pressed in menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/moodInputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/moodInputController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/dbmodelling/SqliteUsersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/dbmodelling/SqliteUsersDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cab302/moodInput-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cab302/moodInput-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cab302/settings-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cab302/settings-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716530783490</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="settings page now opens when button is pressed in menu">
+      <option name="closed" value="true" />
+      <created>1716534737074</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716534737075</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -223,6 +228,7 @@
     <MESSAGE value="merge" />
     <MESSAGE value="set up database settings read write" />
     <MESSAGE value="settings now appears on the menu after logging in still yet to work" />
-    <option name="LAST_COMMIT_MESSAGE" value="settings now appears on the menu after logging in still yet to work" />
+    <MESSAGE value="settings page now opens when button is pressed in menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="settings page now opens when button is pressed in menu" />
   </component>
 </project>

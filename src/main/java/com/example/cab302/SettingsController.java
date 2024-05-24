@@ -3,6 +3,7 @@ package com.example.cab302;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ToggleButton;
+import javafx.stage.Stage;
 
 public class SettingsController {
     @FXML private CheckBox trackUsageCheckBox;
@@ -71,11 +72,17 @@ public class SettingsController {
     @FXML
     private void onSaveSettings() {
         // Save selected Settings
+        settingsManager.saveSettings(userSettings);
+        // close settings window
+        Stage stage = (Stage) trackUsageCheckBox.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     private void onCancelSettings() {
-        // cancel/ dont save settings
+        // close settings window without saving
+        Stage stage = (Stage) trackUsageCheckBox.getScene().getWindow();
+        stage.close();
 
     }
 }
