@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab311d6b-2b3e-40e2-aadf-20bd3d30ce43" name="Changes" comment="merge">
+    <list default="true" id="ab311d6b-2b3e-40e2-aadf-20bd3d30ce43" name="Changes" comment="set up database settings read write">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/moodInputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/moodInputController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cab302/moodInput-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cab302/moodInput-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716514510106</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="set up database settings read write">
+      <option name="closed" value="true" />
+      <created>1716520462868</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716520462869</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -201,6 +210,7 @@
     <MESSAGE value="merged master, setup fxml for settings, settings controller" />
     <MESSAGE value="settings runs on local machine, controller and manager works, still need to set up in database to rembember the users chosen settings" />
     <MESSAGE value="merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge" />
+    <MESSAGE value="set up database settings read write" />
+    <option name="LAST_COMMIT_MESSAGE" value="set up database settings read write" />
   </component>
 </project>

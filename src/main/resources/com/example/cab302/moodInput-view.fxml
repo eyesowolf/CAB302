@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" fx:id="root" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302.controller.moodInputController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -75,6 +75,11 @@
                         <Font size="20.0" />
                     </font>
                 </Button>
+                <Button fx:id="settingsButton" layoutX="55.0" layoutY="346.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Settings" textFill="WHITE" onAction="#openSettings">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="452.0" layoutX="323.0" layoutY="245.0" stroke="TRANSPARENT" strokeType="INSIDE" width="888.0" />
                 <RadioButton layoutX="700.0" layoutY="310.0" mnemonicParsing="false" text="Angry" />
                 <RadioButton layoutX="700.0" layoutY="250.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Happy" />
@@ -85,19 +90,16 @@
                 <RadioButton layoutX="700.0" layoutY="460.0" mnemonicParsing="false" text="Confident" />
                 <RadioButton layoutX="700.0" layoutY="370.0" mnemonicParsing="false" text="Depressed" />
                 <Button layoutX="1087.0" layoutY="626.0" mnemonicParsing="false" style="-fx-background-color: #143C49;" text="Submit" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
-                <RadioButton layoutX="700.0" layoutY="490.0" mnemonicParsing="false" text="Tired" />
-                <Text fill="WHITE" layoutX="652.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[TODAYS DATE]" wrappingWidth="182.0341796875">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font></Text>
-                <Button layoutX="55.0" layoutY="346.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Button" textFill="WHITE">
                     <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                     </font>
                 </Button>
+                <RadioButton layoutX="700.0" layoutY="490.0" mnemonicParsing="false" text="Tired" />
+                <Text fill="WHITE" layoutX="652.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[TODAYS DATE]" wrappingWidth="182.0341796875">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Text>
                 <Button layoutX="1111.0" layoutY="708.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Tomorrow" />
                 <Button layoutX="333.0" layoutY="708.0" mnemonicParsing="false" text="Yesterday" />
                 <Text fill="#143c49" layoutX="401.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today I feel..." wrappingWidth="111.0">
@@ -110,31 +112,31 @@
                         <Font size="24.0" />
                     </font>
                 </Text>
-            <ImageView fitHeight="210.0" fitWidth="365.0">
-               <image>
-                  <Image url="@images/Mood.e_LightMode.png" />
-               </image>
-            </ImageView>
-            <Text fill="#143c49" layoutX="424.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session Details" wrappingWidth="81.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutX="581.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOOD TRACKING" wrappingWidth="324.0">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Text>
-            <Text fill="#143c49" layoutX="660.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[Session Start Time]" textAlignment="CENTER" wrappingWidth="166.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-            <Text fill="#143c49" layoutX="660.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total: 00h 00m" textAlignment="CENTER" wrappingWidth="166.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
+                <ImageView fitHeight="210.0" fitWidth="365.0">
+                    <image>
+                        <Image url="@images/Mood.e_LightMode.png" />
+                    </image>
+                </ImageView>
+                <Text fill="#143c49" layoutX="424.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session Details" wrappingWidth="81.0">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Text fill="WHITE" layoutX="581.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOOD TRACKING" wrappingWidth="324.0">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Text>
+                <Text fill="#143c49" layoutX="660.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[Session Start Time]" textAlignment="CENTER" wrappingWidth="166.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+                <Text fill="#143c49" layoutX="660.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total: 00h 00m" textAlignment="CENTER" wrappingWidth="166.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
             </children>
         </AnchorPane>
     </children>
