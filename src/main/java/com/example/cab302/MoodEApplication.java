@@ -1,10 +1,13 @@
 package com.example.cab302;
 
+import com.example.cab302.controller.MoodChartViewController;
 import com.example.cab302.dbmodelling.IUserDAO;
 import com.example.cab302.dbmodelling.SqliteUsersDAO;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -66,13 +69,21 @@ public class MoodEApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    public void showMoodChartView(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("MoodChartView.fxml.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
-        stage.setTitle("Mood Chart");
-        stage.setScene(scene);
-        stage.show();
+
+    private void handleMoodChart(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MoodChartView.fxml"));
+            Parent root = loader.load();
+
+            MoodChartViewController controller = loader.getController();
+
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void showSettingsView(Stage stage) throws IOException {

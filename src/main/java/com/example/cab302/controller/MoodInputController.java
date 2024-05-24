@@ -1,15 +1,22 @@
 package com.example.cab302.controller;
 
-import com.example.cab302.dbmodelling.moodData;
 import com.example.cab302.dbmodelling.SqliteUsersDAO;
+import com.example.cab302.dbmodelling.moodData;
+import java.io.IOException;
 import java.util.Date;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
+import javafx.stage.Stage;
 
 public class MoodInputController {
     @FXML
@@ -89,6 +96,23 @@ public class MoodInputController {
 
             // Save the mood data
             usersDAO.saveMoodData(newMoodData);
+        }
+    }
+
+    @FXML
+    private void handleMoodChart(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MoodChartView.fxml"));
+            Parent root = loader.load();
+
+            MoodChartViewController controller = loader.getController();
+            controller.setCurrentUserId(currentUserId);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

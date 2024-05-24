@@ -75,6 +75,11 @@
                         <Font size="20.0" />
                     </font>
                 </Button>
+                <Button layoutX="55.0" layoutY="344.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Mood Chart" textFill="WHITE" onAction="#handleMoodChart">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="452.0" layoutX="323.0" layoutY="245.0" stroke="TRANSPARENT" strokeType="INSIDE" width="888.0" />
 
                 <RadioButton fx:id="happyRadioButton" layoutX="700.0" layoutY="250.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Happy" />

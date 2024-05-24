@@ -32,16 +32,8 @@ public class LoginController {
     protected void onExit() {
         System.exit(0);
     }
-    @FXML
-    protected void onSkipLogin(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
-        try {
-            app.showMoodChartView(stage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
+
 
 
     @FXML
