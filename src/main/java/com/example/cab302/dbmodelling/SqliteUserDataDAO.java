@@ -15,6 +15,7 @@ import java.util.List;
 public class SqliteUserDataDAO implements IUserDataDAO {
     private Connection connection;
     private int userID;
+    private String databaseName;
 
     /**
      * Initialises an instance of the database connection. It's important that a userID is passed here such that the
@@ -27,6 +28,7 @@ public class SqliteUserDataDAO implements IUserDataDAO {
     public SqliteUserDataDAO(int userID) {
         connection = SqliteConnection.getInstance();
         this.userID = userID;
+        databaseName = "userData"+userID;
         createTable();
     }
 
@@ -44,16 +46,8 @@ public class SqliteUserDataDAO implements IUserDataDAO {
     private void createTable() {
         // Create table if not exists
         try {
-            Statement statement = connection.createStatement();
-            String query = "CREATE TABLE IF NOT EXISTS userData"+userID+" ("
-                    + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + "entryName VARCHAR NOT NULL,"
-                    + "entryDate VARCHAR NOT NULL,"
-                    + "entryMood VARCHAR NOT NULL,"
-                    + "entryDescription TEXT,"
-                    + "entryUserID INT,"
-                    + ")";
-            statement.execute(query);
+            PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS "+databaseName+" (id INTEGER PRIMARY KEY AUTOINCREMENT, entryName VARCHAR NOT NULL, entryDate VARCHAR NOT NULL, entryMood VARCHAR NOT NULL, entryDescription TEXT, entryUserID INT)");
+            statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,16 +61,16 @@ public class SqliteUserDataDAO implements IUserDataDAO {
 
     public void addUserData(UserData data){
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO userData"+userID+" (entryName, entryDate, entryMood, entryDescription, entryUserID) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO "+databaseName+" (entryName, entryDate, entryMood, entryDescription, entryUserID) VALUES (?, ?, ?, ?, ?)");
             statement.setString(1, data.getName());
-            statement.setString(2, data.getDate());
+            statement.setInt(2, data.getDate());
             statement.setString(3, data.getMood());
             statement.setString(4, data.getDescription());
             statement.setInt(5, data.getUserID());
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if(generatedKeys.next()){
-                data.setUserID(generatedKeys.getInt(1));
+                data.setID(generatedKeys.getInt(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,14 +83,12 @@ public class SqliteUserDataDAO implements IUserDataDAO {
      */
     public void updateUserData(UserData data) {
         try {
-            String newDate = data.getDate();
-            PreparedStatement updateStatement = connection.prepareStatement("UPDATE ? SET entryName=?, entryDate=?, entryMood=?, entryDescription=? WHERE id=?");
-            updateStatement.setString(1, "userData"+data.getUserID());
-            updateStatement.setString(2, data.getName());
-            updateStatement.setString(3, newDate);
-            updateStatement.setString(4, data.getMood());
-            updateStatement.setString(5, data.getDescription());
-            updateStatement.setInt(6, data.getID());
+            PreparedStatement updateStatement = connection.prepareStatement("UPDATE "+databaseName+" SET entryName=?, entryDate=?, entryMood=?, entryDescription=? WHERE id=?");
+            updateStatement.setString(1, data.getName());
+            updateStatement.setInt(2, data.getDate());
+            updateStatement.setString(3, data.getMood());
+            updateStatement.setString(4, data.getDescription());
+            updateStatement.setInt(5, data.getID());
             updateStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -109,7 +101,7 @@ public class SqliteUserDataDAO implements IUserDataDAO {
      * @param endDate The date at which to stop looking for data as a string.
      * @return
      */
-    public List<UserData> getUserDataInRange(String startDate, String endDate) {
+    public List<UserData> getUserDataInRange(int startDate, int endDate) {
         List<UserData> dataPoints = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
@@ -118,7 +110,7 @@ public class SqliteUserDataDAO implements IUserDataDAO {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String entryName = resultSet.getString("entryName");
-                String entryDate =resultSet.getString("entryDate");
+                int entryDate =resultSet.getInt("entryDate");
                 String entryMood = resultSet.getString("entryMood");
                 String entryDescription = resultSet.getString("entryDescription");
                 int entryUserID = resultSet.getInt("entryUserID");
@@ -148,7 +140,7 @@ public class SqliteUserDataDAO implements IUserDataDAO {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String entryName = resultSet.getString("entryName");
-                String entryDate = resultSet.getString("entryDate");
+                int entryDate = resultSet.getInt("entryDate");
                 String entryMood = resultSet.getString("entryMood");
                 String entryDescription = resultSet.getString("entryDescription");
                 int entryUserID = resultSet.getInt("entryUserID");
@@ -185,7 +177,10 @@ public class SqliteUserDataDAO implements IUserDataDAO {
     public void deleteAllUserData(User user){
         int id = user.getID();
         try {
-            Statement deleteStatement = connection.createStatement();
+            connection.close();
+            SqliteConnection.clearInstance();
+            Connection conn = SqliteConnection.getInstance();
+            Statement deleteStatement = conn.createStatement();
             String deleteQuery = "DROP TABLE userData"+id;
             deleteStatement.execute(deleteQuery);
         } catch (Exception e){

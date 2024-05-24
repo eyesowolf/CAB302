@@ -28,6 +28,7 @@ public class CreateAccountController {
     /**
      * Controls the UI for the Account creation page. This class also contains functions to verify the data being entered before it is then passed onto the Database
      */
+    private static MoodEApplication app = new MoodEApplication();
     public VBox loginContainer;
     public TextField usernameTextField;
     public TextField passwordTextField;
@@ -56,7 +57,6 @@ public class CreateAccountController {
     @FXML
     protected void onBack(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
             app.showLoginView(stage);
         } catch (IOException e) {
@@ -75,7 +75,7 @@ public class CreateAccountController {
             String gender = genderComboBoxField.getValue();
             String email = emailTextField.getText();
             String password = passwordPasswordField.getText();
-            String dob = formatter.format(Date.from(dobDatePicker.getValue().atStartOfDay(defaultZoneId).toInstant()));
+            int dob = app.convertDateToEpoch(formatter.format(Date.from(dobDatePicker.getValue().atStartOfDay(defaultZoneId).toInstant())));
             String securityQuestion = securityQuestionComboBoxField.getValue();
             String securityQuestionANS = securityQuestionAnswerTextField.getText();
             String achievements = "0";

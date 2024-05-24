@@ -22,7 +22,6 @@ public class LoginController {
 
     @FXML
     protected void onLogin(ActionEvent event) {
-
         if (AuthenticateLogin(usernameTextField.getText(),passwordPasswordField.getText())) {
             switchToMoodInput(event);
         } else {

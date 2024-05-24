@@ -21,4 +21,10 @@ public class SqliteConnection {
         }
         return instance;
     }
+
+    public static void clearInstance(){
+        if (instance != null){
+            instance = null;
+        }
+    }
 }

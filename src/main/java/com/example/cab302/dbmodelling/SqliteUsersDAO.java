@@ -15,7 +15,7 @@ public class SqliteUsersDAO implements IUserDAO{
     public SqliteUsersDAO() {
         connection = SqliteConnection.getInstance();
         createTable();
-        //insertSammpleData();
+        insertSammpleData();
     }
     private void createTable() {
         // Create table if not exists
@@ -28,7 +28,7 @@ public class SqliteUsersDAO implements IUserDAO{
                     + "gender VARCHAR NOT NULL,"
                     + "email VARCHAR NOT NULL,"
                     + "password NVARCHAR NOT NULL,"
-                    + "dob VARCHAR NOT NULL,"
+                    + "dob INTTEGER NOT NULL,"
                     + "securityQuestion VARCHAR NOT NULL,"
                     + "securityQuestionANS VARCHAR NOT NULL,"
                     + "prefs BLOB,"
@@ -43,14 +43,18 @@ public class SqliteUsersDAO implements IUserDAO{
 
     private void insertSammpleData(){
         try{
-            Statement clearStatement = connection.createStatement();
-            String clearQuery = "DELETE FROM users";
-            clearStatement.execute(clearQuery);
-            Statement insertStatement = connection.createStatement();
-            String insertQuery = "INSERT INTO users (firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner) VALUES "
-                    + "('John','Doe','Male','john.doe@gmail.com','P@ssw0rd','2000-02-23','question','answer','1','0'),"
-                    + "('Jane','Doe','Female','jane.doe@gmail.com','P@ssw0rd','2000-02-23','question','answer','1','0')";
-            insertStatement.execute(insertQuery);
+            PreparedStatement statement = connection.prepareStatement("SELECT EXISTS (SELECT 1 FROM users)");
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int result = resultSet.getInt(1);
+                if (result == 0) {
+                    Statement insertStatement = connection.createStatement();
+                    String insertQuery = "INSERT INTO users (firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner) VALUES "
+                            + "('John','Doe','Male','john.doe@gmail.com','P@ssw0rd','958867200','question','answer','1','0'),"
+                            + "('Jane','Doe','Female','jane.doe@gmail.com','P@ssw0rd','958867200','question','answer','1','0')";
+                    insertStatement.execute(insertQuery);
+                }
+            }
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -64,7 +68,7 @@ public class SqliteUsersDAO implements IUserDAO{
             statement.setString(3, user.getGender());
             statement.setString(4, user.getEmail());
             statement.setString(5, user.getPassword());
-            statement.setString(6, user.getDoB());
+            statement.setInt(6, user.getDoB());
             statement.setString(7, user.getSecQ());
             statement.setString(8, user.getSecA());
             statement.setBytes(9, user.getPrefs());
@@ -88,7 +92,7 @@ public class SqliteUsersDAO implements IUserDAO{
             updateStatement.setString(3, user.getGender());
             updateStatement.setString(4, user.getEmail());
             updateStatement.setString(5, user.getPassword());
-            updateStatement.setString(6, user.getDoB());
+            updateStatement.setInt(6, user.getDoB());
             updateStatement.setString(7, user.getSecQ());
             updateStatement.setString(8, user.getSecA());
             updateStatement.setBytes(9, user.getPrefs());
@@ -123,7 +127,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                String dob = resultSet.getString("dob");
+                int dob = resultSet.getInt("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
                 byte[] prefs = resultSet.getBytes("prefs");
@@ -152,7 +156,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                String dob = resultSet.getString("dob");
+                int dob = resultSet.getInt("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
                 byte[] prefs = resultSet.getBytes("prefs");
@@ -181,7 +185,7 @@ public class SqliteUsersDAO implements IUserDAO{
                 String gender = resultSet.getString("gender");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                String dob = resultSet.getString("dob");
+                int dob = resultSet.getInt("dob");
                 String secQ = resultSet.getString("securityQuestion");
                 String secA = resultSet.getString("securityQuestionANS");
                 byte[] prefs = resultSet.getBytes("prefs");
