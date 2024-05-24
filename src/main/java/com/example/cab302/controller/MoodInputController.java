@@ -1,5 +1,6 @@
 package com.example.cab302.controller;
 
+import com.example.cab302.MoodEApplication;
 import com.example.cab302.dbmodelling.SqliteUsersDAO;
 import com.example.cab302.dbmodelling.moodData;
 import java.io.IOException;
@@ -101,16 +102,10 @@ public class MoodInputController {
 
     @FXML
     private void handleMoodChart(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("MoodChartView.fxml"));
-            Parent root = loader.load();
-
-            MoodChartViewController controller = loader.getController();
-            controller.setCurrentUserId(currentUserId);
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
+            app.showMoodChartView(stage, currentUserId);
         } catch (IOException e) {
             e.printStackTrace();
         }

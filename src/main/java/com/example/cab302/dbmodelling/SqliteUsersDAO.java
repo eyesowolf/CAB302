@@ -241,9 +241,28 @@ public class SqliteUsersDAO implements IUserDAO{
         }
     }
 
-    public List<moodData> getMoodDataByUserId(int currentUserId) {
-        //get the current user ID and pass it to a table.
-        return null;
+    public List<moodData> getAllMoodData() {
+        List<moodData> moodDataList = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM moods";
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int userId = resultSet.getInt("userId");
+                String moodType = resultSet.getString("moodType");
+                String date = resultSet.getString("date");
+                String description = resultSet.getString("description");
+
+                moodData mood = new moodData(id, "Mood Entry",date, moodType, description, userId);
+                moodDataList.add(mood);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return moodDataList;
     }
-}
+    }
+
+
 
