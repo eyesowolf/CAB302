@@ -17,13 +17,7 @@ public class moodInputController {
     private VBox root;
 
     public void initialize() {
-        // Create linear gradient for background
-        LinearGradient gradient = new LinearGradient(0, 0, 0, 1, true, null,
-                new Stop(0, Color.DARKBLUE),
-                new Stop(1, Color.WHITE));
 
-        // Set background with the gradient
-        root.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #000080, #FFFFFF);");
     }
     public void switchToLanding(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
