@@ -19,8 +19,6 @@ public class moodData {
         this.entryUserID = entryUserID;
     }
 
-    // Getters and setters
-
     public int getDataID() {
         return dataID;
     }
