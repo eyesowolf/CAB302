@@ -19,27 +19,24 @@ public class LandingController {
     }
     public void switchToMoodInput(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodInputView(stage);
+            MoodEApplication.showMoodInputView(stage, currentUserId);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public void switchToSettings(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showSettingsView(stage);
+            MoodEApplication.showSettingsView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public void switchToMoodChart(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodChartView(stage, currentUserId);
+            MoodEApplication.showMoodChartView(stage, currentUserId);
         } catch (IOException e) {
             e.printStackTrace();
         }

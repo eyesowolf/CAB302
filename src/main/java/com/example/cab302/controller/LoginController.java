@@ -35,9 +35,8 @@ public class LoginController {
     @FXML
     protected void onCreateAccount(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showCreateAccountView(stage);
+            MoodEApplication.showCreateAccountView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -45,9 +44,8 @@ public class LoginController {
     @FXML
     protected void onForgotPassword(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showForgotPasswordView(stage);
+            MoodEApplication.showForgotPasswordView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,14 +55,18 @@ public class LoginController {
         SqliteUsersDAO userDAO = new SqliteUsersDAO();
         User user = userDAO.getUserByEmail(username);
         String passwordTrue = user.getPassword();
-        return Objects.equals(password, passwordTrue);
+        if (Objects.equals(password, passwordTrue)){
+            MoodEApplication.setCurrentUserId(user.getID());
+            return true;
+        }
+        return false;
     }
 
+    @FXML
     public void switchToLanding(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showLandingView(stage);
+            MoodEApplication.showLandingView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }

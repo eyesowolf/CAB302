@@ -90,7 +90,7 @@ public class SettingsController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodInputView(stage);
+            app.showMoodInputView(stage, currentUserId);
         } catch (IOException e) {
             e.printStackTrace();
         }
