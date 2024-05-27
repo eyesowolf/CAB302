@@ -87,7 +87,7 @@ public class MoodInputController {
             moodData newMoodData = new moodData(0, "Mood Entry", new Date(), mood, "No Description", currentUserId);
 
             // Save the mood data
-            usersDAO.saveMoodData(newMoodData);
+            // usersDAO.saveMoodData(newMoodData);
         }
     }
 

@@ -31,7 +31,9 @@ public class MoodChartViewController {
         populateMoodChart();
     }
 
+    // Uncomment once Will's DAO changes have been implimented
     private void populateMoodChart() {
+        /*
         List<moodData> moodDataList = usersDAO.getAllMoodData();
         Map<String, Long> moodCountMap = moodDataList.stream()
                 .collect(Collectors.groupingBy(moodData::getEntryMood, Collectors.counting()));
@@ -42,6 +44,8 @@ public class MoodChartViewController {
         }
 
         moodBarChart.getData().add(series);
+
+         */
     }
     public void switchToMoodInput(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
