@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.control.PasswordField?>
 
-<VBox alignment="TOP_CENTER" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.example.cab302.controller.LoginController">
+<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302.controller.LoginController">
    <children>
       <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -95,7 +95,7 @@
                <children>
                       <TextField fx:id="usernameTextField" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                       <PasswordField fx:id="passwordPasswordField" prefHeight="25.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                      <Label text="Username:" GridPane.rowIndex="1" />
+                      <Label text="Email:" GridPane.rowIndex="1" />
                       <Label text="Password:" GridPane.rowIndex="2" />
                </children>
             </GridPane>

@@ -87,7 +87,6 @@
                                     <ColumnConstraints />
                                      </columnConstraints>
                                     <children>
-                                        <Label text="Username" textFill="#143c49" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                                         <Label text="Email" textFill="#143c49" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                                         <Label text="First Name" textFill="#143c49" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                                         <Label text="Last Name" textFill="#143c49" GridPane.columnIndex="0" GridPane.rowIndex="3" />
@@ -95,7 +94,6 @@
                                         <Label text="Date of Birth" textFill="#143c49" GridPane.columnIndex="0" GridPane.rowIndex="5" />
                                         <Label text="Password" textFill="#143c49" GridPane.columnIndex="0" GridPane.rowIndex="6" />
                                         <Label text="Confirm Password" textFill="#143c49" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-                                        <TextField fx:id="usernameTextField" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                                         <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                         <TextField fx:id="firstNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                         <TextField fx:id="lastNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />

@@ -22,11 +22,20 @@ public class MoodEApplication extends Application {
         showLoginView(stage);
     }
 
-    private void showHelloView(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("hello-view.fxml"));
+    public void showLandingView(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("landing-view.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
-        stage.setTitle("Hello!");
+        stage.setTitle("Mood.E");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void showSettingsView(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("settings-view.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
+        stage.setTitle("Mood.E");
         stage.setScene(scene);
         stage.show();
     }
@@ -67,8 +76,8 @@ public class MoodEApplication extends Application {
         stage.show();
     }
 
-    public void showSettingsView(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("settings-view.fxml"));
+    public void showMoodChartView(Stage stage, int currentUserId) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("MoodChartView.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
         stage.setTitle("Mood Input");
@@ -86,7 +95,6 @@ public class MoodEApplication extends Application {
         }
         return 0;
     }
-
     public static void main(String[] args) {
         launch();
     }
