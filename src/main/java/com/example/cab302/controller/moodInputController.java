@@ -23,7 +23,7 @@ public class moodInputController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodInputView(stage);
+            app.showLandingView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
