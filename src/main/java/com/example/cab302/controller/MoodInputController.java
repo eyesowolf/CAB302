@@ -102,6 +102,25 @@ public class MoodInputController {
 
     @FXML
     private void handleMoodChart(ActionEvent event) {
+    public void switchToLanding(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showLandingView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void switchToSettings(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showSettingsView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void switchToMoodChart(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
