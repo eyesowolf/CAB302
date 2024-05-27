@@ -113,5 +113,7 @@ public class SettingsController {
             e.printStackTrace();
         }
     }
-
+    public void onCloseApp(ActionEvent event){
+        System.exit(0);
+    }
 }

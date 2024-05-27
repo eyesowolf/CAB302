@@ -44,5 +44,7 @@ public class LandingController {
             e.printStackTrace();
         }
     }
-
+    public void onCloseApp(ActionEvent event){
+        System.exit(0);
+    }
 }

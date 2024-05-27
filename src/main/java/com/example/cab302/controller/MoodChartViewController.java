@@ -70,5 +70,7 @@ public class MoodChartViewController {
             e.printStackTrace();
         }
     }
-
+    public void onCloseApp(ActionEvent event){
+        System.exit(0);
+    }
 }

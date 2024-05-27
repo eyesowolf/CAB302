@@ -70,7 +70,7 @@
                         <Font size="20.0" />
                     </font>
                 </Button>
-                <Button layoutX="56.0" layoutY="289.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Track Mood" textFill="WHITE">
+                <Button layoutX="57.0" layoutY="289.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Track Mood" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -148,7 +148,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="93.0" layoutY="685.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="118.0" style="-fx-background-color: #143C49;" text="Exit" textFill="WHITE">
+            <Button layoutX="93.0" layoutY="685.0" mnemonicParsing="false" onAction="#onCloseApp" prefHeight="13.0" prefWidth="118.0" style="-fx-background-color: #143C49;" text="Exit" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
