@@ -52,9 +52,8 @@ public class ForgotPasswordController {
         switch (forgotPasswordState){
             case initial:
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                MoodEApplication app = new MoodEApplication();
                 try {
-                    app.showLoginView(stage);
+                    MoodEApplication.showLoginView(stage);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -94,9 +93,8 @@ public class ForgotPasswordController {
             case reset:
                 resetState();
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                MoodEApplication app = new MoodEApplication();
                 try {
-                    app.showLoginView(stage);
+                    MoodEApplication.showLoginView(stage);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -19,6 +19,7 @@ public class UserData {
      * UserData class constructor used to initialise a new UserData object
      * @param name the short name of a data object to be displayed to the user
      * @param date the date and time of the data entry note: this should be of the format "yyyy-MM-dd HH:mm:ss"
+     * @param mood the Mood that is being recorded
      * @param description A description of the data being stored
      * @param userID the user ID of the user who is storing this data
      */
@@ -44,6 +45,4 @@ public class UserData {
     public String getDescription(){return description;}
     public void setUserID(int userID){this.userID = userID;}
     public int getUserID(){return  userID;}
-
-
 }

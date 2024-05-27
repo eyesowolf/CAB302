@@ -1,17 +1,14 @@
 package com.example.cab302.controller;
 
 import com.example.cab302.MoodEApplication;
-import com.example.cab302.dbmodelling.SqliteUsersDAO;
-import com.example.cab302.dbmodelling.moodData;
+import com.example.cab302.dbmodelling.IUserDataDAO;
+import com.example.cab302.dbmodelling.SqliteUserDataDAO;
+import com.example.cab302.dbmodelling.UserData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,20 +20,21 @@ public class MoodChartViewController {
     @FXML
     private BarChart<String, Number> moodBarChart;
 
-    private SqliteUsersDAO usersDAO;
+    IUserDataDAO userDataDAO;
+
+    private int currentUserId;
 
     @FXML
     public void initialize() {
-        usersDAO = new SqliteUsersDAO();
+        this.currentUserId = MoodEApplication.getCurrentUserId();
+        userDataDAO = new SqliteUserDataDAO(currentUserId);
         populateMoodChart();
     }
 
-    // Uncomment once Will's DAO changes have been implimented
     private void populateMoodChart() {
-        /*
-        List<moodData> moodDataList = usersDAO.getAllMoodData();
+        List<UserData> moodDataList = userDataDAO.getAllUserData();
         Map<String, Long> moodCountMap = moodDataList.stream()
-                .collect(Collectors.groupingBy(moodData::getEntryMood, Collectors.counting()));
+                .collect(Collectors.groupingBy(UserData::getMood, Collectors.counting()));
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Map.Entry<String, Long> entry : moodCountMap.entrySet()) {
@@ -44,36 +42,35 @@ public class MoodChartViewController {
         }
 
         moodBarChart.getData().add(series);
-
-         */
     }
+    @FXML
     public void switchToMoodInput(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodInputView(stage);
+            MoodEApplication.showMoodInputView(stage, currentUserId);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    @FXML
     public void switchToSettings(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showSettingsView(stage);
+            MoodEApplication.showSettingsView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    @FXML
     public void switchToLanding(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showLandingView(stage);
+            MoodEApplication.showLandingView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    @FXML
     public void onCloseApp(ActionEvent event){
         System.exit(0);
     }

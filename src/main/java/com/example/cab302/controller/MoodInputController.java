@@ -1,22 +1,18 @@
 package com.example.cab302.controller;
 
 import com.example.cab302.MoodEApplication;
-import com.example.cab302.dbmodelling.SqliteUsersDAO;
-import com.example.cab302.dbmodelling.moodData;
+import com.example.cab302.dbmodelling.IUserDataDAO;
+import com.example.cab302.dbmodelling.SqliteUserDataDAO;
+import com.example.cab302.dbmodelling.UserData;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
 
 public class MoodInputController {
@@ -48,13 +44,14 @@ public class MoodInputController {
     @FXML
     private RadioButton tiredRadioButton;
 
-    private SqliteUsersDAO usersDAO;
+    IUserDataDAO userDataDAO;
     private int currentUserId;
 
     @FXML
     public void initialize() {
+        this.currentUserId = MoodEApplication.getCurrentUserId();
         // Initialize the DAO
-        usersDAO = new SqliteUsersDAO();
+        userDataDAO = new SqliteUserDataDAO(currentUserId);
 
         // Create a ToggleGroup for the RadioButtons
         ToggleGroup moodToggleGroup = new ToggleGroup();
@@ -72,10 +69,6 @@ public class MoodInputController {
 
     }
 
-    public void setCurrentUserId(int userId) {
-        this.currentUserId = userId;
-    }
-
     @FXML
     private void handleSubmit() {
         // Get the selected RadioButton
@@ -84,19 +77,18 @@ public class MoodInputController {
             String mood = selectedRadioButton.getText();
 
             // Create a moodData object and save it using the DAO
-            moodData newMoodData = new moodData(0, "Mood Entry", new Date(), mood, "No Description", currentUserId);
+            UserData newMoodData = new UserData( "Mood Entry", MoodEApplication.convertDateToEpoch(new SimpleDateFormat("yyyy-M-d").format(new Date())), mood, "No Description", currentUserId);
 
             // Save the mood data
-            // usersDAO.saveMoodData(newMoodData);
+            userDataDAO.updateUserData(newMoodData);
         }
     }
 
     @FXML
     public void switchToLanding(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showLandingView(stage);
+            MoodEApplication.showLandingView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,7 +97,7 @@ public class MoodInputController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            app.showSettingsView(stage);
+            MoodEApplication.showSettingsView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,7 +106,7 @@ public class MoodInputController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodChartView(stage, currentUserId);
+            MoodEApplication.showMoodChartView(stage, currentUserId);
         } catch (IOException e) {
             e.printStackTrace();
         }
