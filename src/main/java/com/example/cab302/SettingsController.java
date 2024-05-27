@@ -19,7 +19,10 @@ public class SettingsController {
 
     private UserSettings userSettings;
     private SettingsManager settingsManager = new SettingsManager();
-
+    private int currentUserId;
+    public void setCurrentUserId(int userId) {
+        this.currentUserId = userId;
+    }
     @FXML
     private void initialize() {
         // Load settings and update checkboxes
@@ -105,7 +108,7 @@ public class SettingsController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodChartView(stage);
+            app.showMoodChartView(stage, currentUserId);
         } catch (IOException e) {
             e.printStackTrace();
         }
