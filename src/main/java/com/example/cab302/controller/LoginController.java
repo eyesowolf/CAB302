@@ -23,7 +23,7 @@ public class LoginController {
     @FXML
     protected void onLogin(ActionEvent event) {
         if (AuthenticateLogin(usernameTextField.getText(),passwordPasswordField.getText())) {
-            switchToMoodInput(event);
+            switchToLanding(event);
         } else {
             welcomeText.setText("Login Failed, Please try again");
         }
@@ -60,11 +60,11 @@ public class LoginController {
         return Objects.equals(password, passwordTrue);
     }
 
-    public void switchToMoodInput(ActionEvent event) {
+    public void switchToLanding(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodInputView(stage);
+            app.showLandingView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }

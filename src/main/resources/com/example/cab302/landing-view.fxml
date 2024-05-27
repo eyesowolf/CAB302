@@ -70,18 +70,18 @@
             </Rectangle>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="569.0" layoutX="32.0" layoutY="211.0" opacity="0.46" stroke="TRANSPARENT" strokeType="INSIDE" width="214.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a6273" height="569.0" layoutX="307.0" layoutY="179.0" stroke="TRANSPARENT" strokeType="INSIDE" width="924.0" />
-            <Button layoutX="57.0" layoutY="289.0" mnemonicParsing="false" onAction="#showMoodInputView" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Track Mood" textFill="WHITE">
+            <Button layoutX="57.0" layoutY="289.0" mnemonicParsing="false" onAction="#switchToMoodInput" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Track Mood" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="57.0" layoutY="346.0" mnemonicParsing="false" onAction="#showSettingsView" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Settings" textFill="WHITE">
+            <Button layoutX="57.0" layoutY="346.0" mnemonicParsing="false" onAction="#switchToSettings" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Settings" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="323.0" layoutY="194.0" opacity="0.5" stroke="TRANSPARENT" strokeType="INSIDE" width="100.0" />
-            <Button layoutX="57.0" layoutY="405.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Reports" textFill="WHITE">
+            <Button layoutX="57.0" layoutY="405.0" mnemonicParsing="false" onAction="#switchToData" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Reports" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -101,7 +101,7 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Text>
-            <Button layoutX="57.0" layoutY="232.0" mnemonicParsing="false" onAction="#showLandingView" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Month View" textFill="WHITE">
+            <Button layoutX="57.0" layoutY="232.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Month View" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

@@ -10,15 +10,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloController {
+public class LandingController {
     @FXML
     private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-        System.out.println(ApplicationTracker.getActiveWindow());
-    }
 
     public void switchToMoodInput(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -29,4 +25,23 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+    public void switchToSettings(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showSettingsView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void switchToData(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showLandingView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
