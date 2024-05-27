@@ -15,8 +15,9 @@ public class SqliteUsersDAO implements IUserDAO{
     public SqliteUsersDAO() {
         connection = SqliteConnection.getInstance();
         createTable();
-        insertSammpleData();
+        insertSampleData();
     }
+
     private void createTable() {
         // Create table if not exists
         try {
@@ -41,23 +42,20 @@ public class SqliteUsersDAO implements IUserDAO{
         }
     }
 
-    private void insertSammpleData(){
+    private void insertSampleData(){
         try{
             PreparedStatement statement = connection.prepareStatement("SELECT EXISTS (SELECT 1 FROM users)");
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 int result = resultSet.getInt(1);
                 if (result == 0) {
-                    Statement insertStatement = connection.createStatement();
-                    // Initialize prefs with default values
-                    byte[] defaultPrefs = new byte[]{0}; // Example initialization, adjust as necessary
-                    String insertQuery = "INSERT INTO users (firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, achievements, practitioner) VALUES "
-                            + "('John','Doe','Male','john.doe@gmail.com','P@ssw0rd','958867200','question','answer','1','0'),"
-                            + "('Jane','Doe','Female','jane.doe@gmail.com','P@ssw0rd','958867200','question','answer','1','0')";
+                    byte[] defaultPrefs = new byte[]{0}; // Default preferences initialization
+                    String insertQuery = "INSERT INTO users (firstName, lastName, gender, email, password, dob, securityQuestion, securityQuestionANS, prefs, achievements, practitioner) VALUES "
+                            + "('John','Doe','Male','john.doe@gmail.com','P@ssw0rd','958867200','question','answer',?,'1','0'),"
+                            + "('Jane','Doe','Female','jane.doe@gmail.com','P@ssw0rd','958867200','question','answer',?,'1','0')";
                     PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
                     preparedStatement.setBytes(1, defaultPrefs);
                     preparedStatement.setBytes(2, defaultPrefs);
-
                     preparedStatement.execute();
                 }
             }
@@ -77,7 +75,7 @@ public class SqliteUsersDAO implements IUserDAO{
             statement.setInt(6, user.getDoB());
             statement.setString(7, user.getSecQ());
             statement.setString(8, user.getSecA());
-            statement.setBytes(9, user.getPrefs());
+            statement.setBytes(9, user.getPrefs() != null ? user.getPrefs() : new byte[]{0}); // Initialize prefs if null
             statement.setString(10, user.getAchieves());
             statement.setInt(11, user.getUserPractitioner());
             statement.executeUpdate();
@@ -101,11 +99,12 @@ public class SqliteUsersDAO implements IUserDAO{
             updateStatement.setInt(6, user.getDoB());
             updateStatement.setString(7, user.getSecQ());
             updateStatement.setString(8, user.getSecA());
-            updateStatement.setBytes(9, user.getPrefs());
+            updateStatement.setBytes(9, user.getPrefs() != null ? user.getPrefs() : new byte[]{0}); // Initialize prefs if null
             updateStatement.setString(10, user.getAchieves());
             updateStatement.setInt(11, user.getUserPractitioner());
             updateStatement.setInt(12, user.getID());
             updateStatement.executeUpdate();
+            System.out.println("Updated user: " + user.getEmail());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -115,7 +114,7 @@ public class SqliteUsersDAO implements IUserDAO{
         int id = user.getID();
         try {
             Statement deleteStatement = connection.createStatement();
-            String deleteQuery = "DELETE FROM users WHERE id="+id;
+            String deleteQuery = "DELETE FROM users WHERE id=" + id;
             deleteStatement.execute(deleteQuery);
         } catch (Exception e){
             e.printStackTrace();
@@ -139,7 +138,8 @@ public class SqliteUsersDAO implements IUserDAO{
                 byte[] prefs = resultSet.getBytes("prefs");
                 String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
-                User user = new User(firstName,  lastName,  gender,  email,  password, dob,  secQ, secA ,achievements, practitioner);
+                User user = new User(firstName, lastName, gender, email, password, dob, secQ, secA, achievements, practitioner);
+                user.setPrefs(prefs != null ? prefs : new byte[]{0}); // Initialize prefs if null
                 user.setID(id);
                 return user;
             }
@@ -168,7 +168,8 @@ public class SqliteUsersDAO implements IUserDAO{
                 byte[] prefs = resultSet.getBytes("prefs");
                 String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
-                User user = new User(firstName,  lastName, gender,  email,  password, dob, secQ, secA, achievements, practitioner);
+                User user = new User(firstName, lastName, gender, email, password, dob, secQ, secA, achievements, practitioner);
+                user.setPrefs(prefs != null ? prefs : new byte[]{0}); // Initialize prefs if null
                 user.setID(id);
                 return user;
             }
@@ -197,7 +198,8 @@ public class SqliteUsersDAO implements IUserDAO{
                 byte[] prefs = resultSet.getBytes("prefs");
                 String achievements = resultSet.getString("achievements");
                 int practitioner = resultSet.getInt("practitioner");
-                User user = new User(firstName,  lastName,  gender,  email,  password, dob, secQ, secA,  achievements, practitioner);
+                User user = new User(firstName, lastName, gender, email, password, dob, secQ, secA, achievements, practitioner);
+                user.setPrefs(prefs != null ? prefs : new byte[]{0}); // Initialize prefs if null
                 user.setID(id);
                 users.add(user);
             }

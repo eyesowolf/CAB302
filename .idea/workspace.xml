@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab311d6b-2b3e-40e2-aadf-20bd3d30ce43" name="Changes" comment="settings page now opens when button is pressed in menu">
+    <list default="true" id="ab311d6b-2b3e-40e2-aadf-20bd3d30ce43" name="Changes" comment="when cancel or save settings is pressed the window goes back to the main page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/ApplicationTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/ApplicationTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/MoodEApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/MoodEApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/SettingsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/moodInputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/controller/MoodInputController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cab302/dbmodelling/SqliteUsersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cab302/dbmodelling/SqliteUsersDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cab302/moodInput-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cab302/moodInput-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cab302/settings-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cab302/settings-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -195,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716534737075</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="when cancel or save settings is pressed the window goes back to the main page">
+      <option name="closed" value="true" />
+      <created>1716536460219</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716536460219</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -229,6 +246,7 @@
     <MESSAGE value="set up database settings read write" />
     <MESSAGE value="settings now appears on the menu after logging in still yet to work" />
     <MESSAGE value="settings page now opens when button is pressed in menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="settings page now opens when button is pressed in menu" />
+    <MESSAGE value="when cancel or save settings is pressed the window goes back to the main page" />
+    <option name="LAST_COMMIT_MESSAGE" value="when cancel or save settings is pressed the window goes back to the main page" />
   </component>
 </project>
