@@ -1,8 +1,13 @@
 package com.example.cab302;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ToggleButton;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class SettingsController {
     @FXML private CheckBox trackUsageCheckBox;
@@ -77,5 +82,32 @@ public class SettingsController {
     private void onCancelSettings() {
         // cancel/ dont save settings
 
+    }
+    public void switchToMoodInput(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showMoodInputView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void switchToLanding(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showSettingsView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void switchToData(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showLandingView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
