@@ -72,8 +72,15 @@ public class MoodInputController {
         confidentRadioButton.setToggleGroup(moodToggleGroup);
         tiredRadioButton.setToggleGroup(moodToggleGroup);
 
+        // Create linear gradient for background
+        LinearGradient gradient = new LinearGradient(0, 0, 0, 1, true, null,
+                new Stop(0, Color.DARKBLUE),
+                new Stop(1, Color.WHITE));
 
+        // Set background with the gradient
+        root.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #000080, #FFFFFF);");
     }
+
     public void setCurrentUserId(int userId) {
         this.currentUserId = userId;
     }
@@ -93,6 +100,7 @@ public class MoodInputController {
         }
     }
 
+    @FXML
     public void switchToLanding(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
