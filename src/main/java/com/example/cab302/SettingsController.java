@@ -96,7 +96,7 @@ public class SettingsController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            app.showSettingsView(stage);
+            app.showLandingView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
