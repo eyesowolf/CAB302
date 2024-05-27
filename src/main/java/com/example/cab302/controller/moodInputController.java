@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class moodInputController {
+public class MoodInputController {
     @FXML
     private VBox root;
 
@@ -37,11 +37,11 @@ public class moodInputController {
             e.printStackTrace();
         }
     }
-    public void switchToData(ActionEvent event) {
+    public void switchToMoodChart(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            app.showLandingView(stage);
+            app.showMoodChartView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -58,24 +64,73 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
-            <children>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" stroke="BLACK" strokeType="INSIDE" width="1280.0">
-                    <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.22380952380952385">
-                            <stops>
-                                <Stop color="#2a6274" />
-                                <Stop color="WHITE" offset="1.0" />
-                            </stops>
-                        </LinearGradient>
-                    </fill>
-                </Rectangle>
-                <ImageView fitHeight="528.0" fitWidth="882.0" layoutX="240.0">
-                    <image>
-                        <Image url="@images/Mood.e_LightMode.png" />
-                    </image>
-                </ImageView>
-                <BarChart fx:id="moodBarChart" layoutX="150.0" layoutY="150.0" prefHeight="500.0" prefWidth="1000.0">
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" />
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="780.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1280.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.21904761904761902">
+                     <stops>
+                        <Stop color="#2a6274" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="569.0" layoutX="32.0" layoutY="211.0" opacity="0.46" stroke="TRANSPARENT" strokeType="INSIDE" width="214.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a6273" height="569.0" layoutX="307.0" layoutY="179.0" stroke="TRANSPARENT" strokeType="INSIDE" width="924.0" />
+            <Button layoutX="57.0" layoutY="232.0" mnemonicParsing="false" onAction="#switchToLanding" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Month View" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="56.0" layoutY="289.0" mnemonicParsing="false" onAction="#switchToMoodInput" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Track Mood" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="55.0" layoutY="344.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Mood Chart" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="489.0" layoutX="321.0" layoutY="245.0" stroke="TRANSPARENT" strokeType="INSIDE" width="890.0" />
+            <Text fill="WHITE" layoutX="652.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[MONTH]" textAlignment="CENTER" wrappingWidth="182.0341796875">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="57.0" layoutY="346.0" mnemonicParsing="false" onAction="#switchToSettings" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Settings" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Text fill="WHITE" layoutX="87.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MENU" textAlignment="CENTER" wrappingWidth="118.0341796875">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="210.0" fitWidth="365.0">
+               <image>
+                  <Image url="@images/Mood.e_LightMode.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="581.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOOD REPORTS" textAlignment="CENTER" wrappingWidth="324.0">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Button layoutX="57.0" layoutY="405.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Reports" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="93.0" layoutY="685.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="118.0" style="-fx-background-color: #143C49;" text="Exit" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+                <BarChart fx:id="moodBarChart" layoutX="355.0" layoutY="253.0" prefHeight="473.0" prefWidth="808.0">
                     <xAxis>
                         <CategoryAxis label="Mood" />
                     </xAxis>
@@ -83,7 +138,7 @@
                         <NumberAxis label="Count" />
                     </yAxis>
                 </BarChart>
-            </children>
-        </AnchorPane>
+         </children>
+      </AnchorPane>
     </children>
 </VBox>

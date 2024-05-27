@@ -71,7 +71,7 @@ public class MoodEApplication extends Application {
         stage.show();
     }
 
-    public void showMoodChartView(Stage stage, int userId) throws IOException {
+    public void showMoodChartView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("MoodChartView.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720

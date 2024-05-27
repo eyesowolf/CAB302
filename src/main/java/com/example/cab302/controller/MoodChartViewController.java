@@ -1,15 +1,20 @@
 package com.example.cab302.controller;
 
+import com.example.cab302.MoodEApplication;
 import com.example.cab302.dbmodelling.SqliteUsersDAO;
 import com.example.cab302.dbmodelling.moodData;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -38,4 +43,32 @@ public class MoodChartViewController {
 
         moodBarChart.getData().add(series);
     }
+    public void switchToMoodInput(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showMoodInputView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void switchToSettings(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showSettingsView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void switchToLanding(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MoodEApplication app = new MoodEApplication();
+        try {
+            app.showLandingView(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

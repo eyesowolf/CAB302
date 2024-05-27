@@ -81,7 +81,7 @@
                </font>
             </Button>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="323.0" layoutY="194.0" opacity="0.5" stroke="TRANSPARENT" strokeType="INSIDE" width="100.0" />
-            <Button layoutX="57.0" layoutY="405.0" mnemonicParsing="false" onAction="#switchToData" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Reports" textFill="WHITE">
+            <Button layoutX="57.0" layoutY="405.0" mnemonicParsing="false" onAction="#switchToMoodChart" prefHeight="44.0" prefWidth="189.0" style="-fx-background-color: #143C49;" text="Reports" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -140,6 +140,11 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="719.0" layoutY="635.0" stroke="TRANSPARENT" strokeType="INSIDE" width="100.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="587.0" layoutY="635.0" stroke="TRANSPARENT" strokeType="INSIDE" width="100.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="323.0" layoutY="635.0" stroke="TRANSPARENT" strokeType="INSIDE" width="100.0" />
+            <Button layoutX="93.0" layoutY="685.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="118.0" style="-fx-background-color: #143C49;" text="Exit" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

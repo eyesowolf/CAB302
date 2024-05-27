@@ -34,11 +34,11 @@ public class LandingController {
             e.printStackTrace();
         }
     }
-    public void switchToData(ActionEvent event) {
+    public void switchToMoodChart(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            app.showLandingView(stage);
+            app.showMoodChartView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
