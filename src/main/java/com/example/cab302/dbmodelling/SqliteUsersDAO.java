@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,24 +19,37 @@ public class SqliteUsersDAO implements IUserDAO{
         insertSammpleData();
     }
     private void createTable() {
-        // Create table if not exists
+        // Create tables if they do not exist
         try {
             Statement statement = connection.createStatement();
-            String query = "CREATE TABLE IF NOT EXISTS users ("
+
+            // Create users table
+            String usersTableQuery = "CREATE TABLE IF NOT EXISTS users ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "firstName VARCHAR NOT NULL,"
                     + "lastName VARCHAR NOT NULL,"
                     + "gender VARCHAR NOT NULL,"
                     + "email VARCHAR NOT NULL,"
                     + "password NVARCHAR NOT NULL,"
-                    + "dob INTTEGER NOT NULL,"
+                    + "dob INTEGER NOT NULL,"
                     + "securityQuestion VARCHAR NOT NULL,"
                     + "securityQuestionANS VARCHAR NOT NULL,"
                     + "prefs BLOB,"
                     + "achievements VARCHAR,"
                     + "practitioner INT"
                     + ")";
-            statement.execute(query);
+            statement.execute(usersTableQuery);
+
+            // Create moods table
+            String moodsTableQuery = "CREATE TABLE IF NOT EXISTS moods ("
+                    + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + "userId INTEGER,"
+                    + "moodType VARCHAR,"
+                    + "date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
+                    + "description TEXT"
+                    + ")";
+            statement.execute(moodsTableQuery);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,6 +73,7 @@ public class SqliteUsersDAO implements IUserDAO{
             e.printStackTrace();
         }
     }
+
 
     public void addUser(User user) {
         try {
@@ -196,4 +211,68 @@ public class SqliteUsersDAO implements IUserDAO{
         }
         return null;
     }
-}
+
+    private void createMoodsTable() {
+        try {
+            Statement statement = connection.createStatement();
+            String query = "CREATE TABLE IF NOT EXISTS moods ("
+                    + "UserID INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + "userId INTEGER,"
+                    + "moodType VARCHAR,"
+                    + "date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
+                    + "description TEXT"
+                    + ")";
+            statement.execute(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveMoodData(moodData moodData) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO moods (UserID, moodType, description) VALUES (?, ?, ?)"
+            );
+            statement.setInt(1, moodData.getEntryUserID()); // Assuming moodData has getUserId() method
+            statement.setString(2, moodData.getEntryMood());
+            statement.setString(3, moodData.getEntryDescription());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<moodData> getAllMoodData() {
+        List<moodData> moodDataList = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM moods");
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int userId = resultSet.getInt("userId");
+                String moodType = resultSet.getString("moodType");
+                String date = resultSet.getString("date");
+                String description = resultSet.getString("description");
+                moodData moodData = new moodData(id, "Mood Entry", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date), moodType, description, userId);
+                moodDataList.add(moodData);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return moodDataList;
+    }
+
+    private int convertDateToEpoch(String date) {
+        long epoch;
+        try {
+            epoch = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date).getTime() / 1000;
+            return (int) epoch;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    }
+
+
+
