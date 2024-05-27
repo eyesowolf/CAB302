@@ -80,7 +80,7 @@ public class MoodInputController {
             UserData newMoodData = new UserData( "Mood Entry", MoodEApplication.convertDateToEpoch(new SimpleDateFormat("yyyy-M-d").format(new Date())), mood, "No Description", currentUserId);
 
             // Save the mood data
-            userDataDAO.updateUserData(newMoodData);
+            userDataDAO.addUserData(newMoodData);
         }
     }
 
@@ -106,7 +106,7 @@ public class MoodInputController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            MoodEApplication.showMoodChartView(stage, currentUserId);
+            MoodEApplication.showMoodChartView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }

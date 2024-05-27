@@ -12,17 +12,20 @@ import java.text.ParseException;
 public class MoodEApplication extends Application {
 
      private static int currentUserId;
+    static PersistentThread persistentThread = new PersistentThread();
 
     public MoodEApplication(){
-
+        new Thread(persistentThread).start();
     }
 
     public static int getCurrentUserId() {
+        currentUserId = persistentThread.getUserID();
         return currentUserId;
     }
 
     public static void setCurrentUserId(int currentUserId) {
         MoodEApplication.currentUserId = currentUserId;
+        persistentThread.setUserID(currentUserId);
     }
 
     @Override
@@ -75,8 +78,7 @@ public class MoodEApplication extends Application {
         stage.show();
     }
 
-    public static void showMoodInputView(Stage stage, int currentUserId) throws IOException {
-        MoodEApplication.currentUserId = currentUserId;
+    public static void showMoodInputView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("moodInput-view.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720
@@ -85,8 +87,7 @@ public class MoodEApplication extends Application {
         stage.show();
     }
 
-    public static void showMoodChartView(Stage stage, int currentUserId) throws IOException {
-        MoodEApplication.currentUserId = currentUserId;
+    public static void showMoodChartView(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MoodEApplication.class.getResource("MoodChartView.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1280, 800); // Set width to 1280 and height to 720

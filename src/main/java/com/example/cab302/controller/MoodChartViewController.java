@@ -47,7 +47,7 @@ public class MoodChartViewController {
     public void switchToMoodInput(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
-            MoodEApplication.showMoodInputView(stage, currentUserId);
+            MoodEApplication.showMoodInputView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
