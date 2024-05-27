@@ -1,6 +1,5 @@
 package com.example.cab302.controller;
 
-import com.example.cab302.ApplicationTracker;
 import com.example.cab302.MoodEApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,9 +12,11 @@ import java.io.IOException;
 public class LandingController {
     @FXML
     private Label welcomeText;
-
+    private int currentUserId;
     @FXML
-
+    public void setCurrentUserId(int userId) {
+        this.currentUserId = userId;
+    }
     public void switchToMoodInput(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
@@ -38,7 +39,7 @@ public class LandingController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodChartView(stage);
+            app.showMoodChartView(stage, currentUserId);
         } catch (IOException e) {
             e.printStackTrace();
         }
