@@ -88,27 +88,24 @@ public class SettingsController {
     }
     public void switchToMoodInput(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodInputView(stage, currentUserId);
+            MoodEApplication.showMoodInputView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public void switchToLanding(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showLandingView(stage);
+            MoodEApplication.showLandingView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public void switchToMoodChart(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MoodEApplication app = new MoodEApplication();
         try {
-            app.showMoodChartView(stage, currentUserId);
+            MoodEApplication.showMoodChartView(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
