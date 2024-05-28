@@ -77,7 +77,7 @@ public class MoodInputController {
             String mood = selectedRadioButton.getText();
 
             // Create a moodData object and save it using the DAO
-            UserData newMoodData = new UserData( "Mood Entry", MoodEApplication.convertDateToEpoch(new SimpleDateFormat("yyyy-M-d").format(new Date())), mood, "No Description", currentUserId);
+            UserData newMoodData = new UserData( "Mood Entry", MoodEApplication.convertDateToEpoch(new SimpleDateFormat("yyyy-M-d").format(new Date())), mood, MoodEApplication.getLastUsedApp(), currentUserId);
 
             // Save the mood data
             userDataDAO.addUserData(newMoodData);
