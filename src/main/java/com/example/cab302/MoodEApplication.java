@@ -12,15 +12,23 @@ import java.text.ParseException;
 public class MoodEApplication extends Application {
 
      private static int currentUserId;
+     private static String lastUsedApp;
     static PersistentThread persistentThread = new PersistentThread();
+    static AppTrackThread appTrackThread = new AppTrackThread();
 
     public MoodEApplication(){
         new Thread(persistentThread).start();
+        new Thread(appTrackThread).start();
     }
 
     public static int getCurrentUserId() {
         currentUserId = persistentThread.getUserID();
         return currentUserId;
+    }
+
+    public static String getLastUsedApp(){
+        lastUsedApp = appTrackThread.getLastapplication();
+        return lastUsedApp;
     }
 
     public static void setCurrentUserId(int currentUserId) {

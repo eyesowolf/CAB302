@@ -58,7 +58,7 @@ public class ApplicationTracker {
                 command[2] = "\tset activeApp to item 1 of activeApps";
                 command[3] = "end tell";
                 AppleScript as = new AppleScript(command);
-                result = as.executeAsString();
+                result = as.executeAsString().replaceAll("\"","");
             } catch (AppleScriptException e) {
                 e.printStackTrace();
             }
