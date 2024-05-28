@@ -133,7 +133,7 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Text>
-            <Text fill="#143c49" layoutX="660.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[Session Start Time]" textAlignment="CENTER" wrappingWidth="166.0">
+            <Text fx:id="SessionInformation" fill="#143c49" layoutX="660.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[Session Start Time]" textAlignment="CENTER" wrappingWidth="166.0">
                <font>
                   <Font size="14.0" />
                </font>
